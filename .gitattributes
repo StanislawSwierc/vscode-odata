@@ -62,6 +62,6 @@
 #*.rtf   diff=astextplain
 #*.RTF   diff=astextplain
 
-
+package.json text eol=lf
 *.pegjs text eol=lf
 scripts/OData/Parser.js text eol=lf
