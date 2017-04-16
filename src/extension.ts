@@ -3,16 +3,19 @@
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 
-import {ODataMode} from './odataMode';
+import { ODataMode } from './odataMode';
+import { ODataDiagnosticProvider } from './odataDiagnostic';
 
-import {TextDocument, Position, CompletionItem, CompletionList, CompletionItemKind, Hover, Range, SymbolInformation, Diagnostic,
-	TextEdit, FormattingOptions, MarkedString, CancellationToken, ProviderResult} from 'vscode';
+import {
+    TextDocument, Position, CompletionItem, CompletionList, CompletionItemKind, Hover, Range, SymbolInformation, Diagnostic,
+    TextEdit, FormattingOptions, MarkedString, CancellationToken, ProviderResult
+} from 'vscode';
 
 
-class ODataCompletionItemProvider implements vscode.CompletionItemProvider{
-	triggerCharacters = [".", "=", ",", "(", "/", "$", "'"];
+class ODataCompletionItemProvider implements vscode.CompletionItemProvider {
+    triggerCharacters = [".", "=", ",", "(", "/", "$", "'"];
 
-    provideCompletionItems(document: TextDocument, position: Position, token: CancellationToken): ProviderResult<CompletionList>{
+    provideCompletionItems(document: TextDocument, position: Position, token: CancellationToken): ProviderResult<CompletionList> {
         if (document.getWordRangeAtPosition(position, /\$[a-zA-Z]*/)) {
             return new CompletionList([
                 {
@@ -51,30 +54,19 @@ class ODataCompletionItemProvider implements vscode.CompletionItemProvider{
                     kind: CompletionItemKind.Keyword
                 }
                 // TODO: add the rest. 
-            ]);    
+            ]);
         }
 
         return new CompletionList([
-			{
-				label: "stasiu",
-				insertText: "stasiu to super bohater jest",
-				documentation: "super doc",
-				kind: CompletionItemKind.Field,
+            {
+                label: "stasiu",
+                insertText: "stasiu to super bohater jest",
+                documentation: "super doc",
+                kind: CompletionItemKind.Field,
 
-			}
-		]);
+            }
+        ]);
     }
-}
-
-export function parseLiveFile(e: vscode.TextDocumentChangeEvent) {
-	if (e.document.isUntitled) {
-		return;
-	}
-	if (e.document.languageId !== ODataMode.language) {
-		return;
-	}
-
-
 }
 
 // this method is called when your extension is activated
@@ -99,10 +91,11 @@ export function activate(context: vscode.ExtensionContext) {
     context.subscriptions.push(vscode.languages.registerCompletionItemProvider(ODataMode,
         completionItemProvider, ...completionItemProvider.triggerCharacters));
 
-    vscode.workspace.onDidChangeTextDocument(parseLiveFile, null, context.subscriptions);
+    let diagnosticCollection = vscode.languages.createDiagnosticCollection('odata-diagnostics');
+    let diagnosticsProvider = new ODataDiagnosticProvider(diagnosticCollection);
+    vscode.workspace.onDidChangeTextDocument(diagnosticsProvider.onDidChangeTextDocument, null, context.subscriptions);
 
-
-    context.subscriptions.push(disposable);
+    context.subscriptions.push(disposable)  ;
 }
 
 // this method is called when your extension is deactivated
