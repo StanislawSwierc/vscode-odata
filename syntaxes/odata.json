@@ -1,0 +1,117 @@
+{
+	"scopeName": "source.odata",
+	"name": "OData",
+	"fileTypes": [
+		"odata"
+	],
+	"patterns": [
+		{
+			"name": "comment.line.block.odata",
+			"begin": "/\\*",
+			"end": "\\*/"
+		},
+		{
+			"name": "comment.line.double-slash.odata",
+			"begin": "//",
+			"end": "$"
+		},
+		{
+			"name": "constant.language.null",
+			"match": "\\b(null)\\b"
+		},
+		{
+			"name": "constant.language.literal.odata",
+			"match": "\\$(it|root)\\b"
+		},
+		{
+			"name": "constant.numeric.odata",
+			"match": "\\b([0-9]+\\.?[0-9]*)\\b"
+		},
+		{
+			"name": "constant.numeric.hex.odata",
+			"match": "\\b(0[xX][0-9a-fA-F]+)\\b"
+		},
+		{
+			"name": "constant.guid.odata",
+			"match": "\\b[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}\\b"
+		},
+		{
+			"name": "constant.language.odata",
+			"match": "\\b(false|true)\\b"
+		},
+		{
+			"name": "keyword.control.odata",
+			"match": "\\$(apply|count|filter|orderby|select|skip|top)\\b"
+		},
+		{
+			"name": "keyword.operator.arithmetic.odata",
+			"match": "\\b(add|div|eq|ge|gt|le|lt|mod|mul|ne|not|sub)\\b"
+		},
+		{
+			"name": "keyword.operator.relational.odata",
+			"match": "\\b(add|div|eq|ge|gt|le|lt|mod|mul|ne|not|sub)\\b"
+		},
+		{
+			"name": "keyword.operator.logical.odata",
+			"match": "\\b(and|or)\\b"
+		},
+		{
+			"name": "entity.name.function.odata",
+			"match": "\\b(concat|contains|endswith|indexof|length|startswith|substring|tolower|toupper|trim|date|day|fractionalseconds|hour|maxdatetime|mindatetime|minute|month|now|second|time|totaloffsetminutes|totalseconds|year|ceiling|floor|round|cast|isof|geo\\.distance|geo\\.intersects|geo\\.length|any|all)\\b"
+		},
+				{
+			"match": "(?:([_[:alpha:]][_$[:alnum:]]*)(/))*(any|all)",
+			"captures": {
+				"1": {
+					"name": "variable.other.property.navigation.odata"
+				},
+				"2": {
+					"name": "punctuation.accessor.odata"
+				},
+				"3": {
+					"name": "entity.name.function.odata"
+				}
+			}
+		},
+				{
+			"match": "(?:([_[:alpha:]][_$[:alnum:]]*)(\\.))+([_[:alpha:]][_$[:alnum:]]*)",
+			"captures": {
+				"1": {
+					"name": "entity.name.type.odata"
+				},
+				"2": {
+					"name": "punctuation.accessor.odata"
+				},
+				"3": {
+					"name": "entity.name.type.odata"
+				}
+			}
+		},
+		{
+			"match": "(?:([_[:alpha:]][_$[:alnum:]]*)(/))*([_[:alpha:]][_$[:alnum:]]*)",
+			"captures": {
+				"1": {
+					"name": "variable.other.property.navigation.odata"
+				},
+				"2": {
+					"name": "punctuation.accessor.odata"
+				},
+				"3": {
+					"name": "variable.other.property.primitive.odata"
+				}
+			}
+		},
+		{
+			"name": "string.quoted.single.odata",
+			"begin": "'",
+			"end": "'",
+			"patterns": [
+				{
+					"name": "string.quoted.single.odata",
+					"match": "''"
+				}
+			]
+		}
+	],
+	"version": "TODO"
+}
