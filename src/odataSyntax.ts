@@ -60,6 +60,10 @@ export class SyntaxVisitor<T> {
                 return this.visitPrimitiveProperty(node as SelectProprty);
             case SyntaxKind.select:
                 return this.visitSelect(node as SelectSyntax);
+			default:
+				return this.visitDefault(node);
+				// TODO: Uncomment after parser is fixed.
+				//throw new RangeError(`Unknown SyntaxKind '${node.kind}'`);
         }
     }
 
@@ -77,5 +81,12 @@ export class SyntaxVisitor<T> {
 
     visitPrimitiveProperty(node : SelectProprty) : T {
         return this.visitDefault(node);
+    }
+}
+
+export class SyntaxWalker extends SyntaxVisitor<void> {
+    visitSelect(node : SelectSyntax) {
+		node.children.forEach(n => this.visitDefault(node));
+        this.visitDefault(node);
     }
 }

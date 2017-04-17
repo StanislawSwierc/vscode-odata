@@ -2,6 +2,23 @@ import * as vscode from 'vscode';
 import { ODataMode } from './odataMode';
 import * as Parser from "./odataParser";
 
+import * as syntax from "./odataSyntax";
+
+class DiagnosticSyntaxVisitor extends syntax.SyntaxWalker {
+    errors : syntax.ErrorSyntax[];
+
+    constructor() {
+        super();
+        this.errors = new Array<syntax.ErrorSyntax>();
+    }
+
+    visitDefault(node: syntax.SyntaxNode) {
+        if (node.error) {
+            this.errors.push(node.error);
+        }
+    }
+}
+
 
 export class ODataDiagnosticProvider {
     private runner: NodeJS.Timer;
@@ -32,8 +49,11 @@ export class ODataDiagnosticProvider {
         try {
             let tree = Parser.parse(e.document.getText())
 
-            if (tree.error) {
-                let errorNode = tree.error;
+            let diagnosticSyntaxVisitor = new DiagnosticSyntaxVisitor();
+            diagnosticSyntaxVisitor.visit(tree);
+            
+            if (diagnosticSyntaxVisitor.errors.length > 0) {
+                let errorNode = diagnosticSyntaxVisitor.errors[0];
                 this.diagnostics.set(e.document.uri, [
                     new vscode.Diagnostic(
                         new vscode.Range(
