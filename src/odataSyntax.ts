@@ -18,10 +18,10 @@ export interface Span {
 }
 
 export const SyntaxKind = strEnum([
-    'error',
-    'select',
-    'primitiveProperty',
-    'navigationProperty'
+    'Error',
+    'Select',
+    'PrimitiveProperty',
+    'NavigationProperty'
 ])
 
 export type SyntaxKind = keyof typeof SyntaxKind;
@@ -52,13 +52,13 @@ export class SyntaxVisitor<T> {
         // Dispatch on node kind instead of delegating dispatching to node
         // classes because the instances are created by pegjs parser.
         switch(node.kind) {
-            case SyntaxKind.error:
+            case SyntaxKind.Error:
                 return this.visitError(node);
             // case SyntaxKind.navigationProperty:
             //     return this.visitNavigationProperty
-            case SyntaxKind.primitiveProperty:
+            case SyntaxKind.PrimitiveProperty:
                 return this.visitPrimitiveProperty(node as SelectProprty);
-            case SyntaxKind.select:
+            case SyntaxKind.Select:
                 return this.visitSelect(node as SelectSyntax);
 			default:
 				return this.visitDefault(node);

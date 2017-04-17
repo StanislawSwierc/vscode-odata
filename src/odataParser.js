@@ -156,14 +156,14 @@
           	var items = tail.map(function(x) { return x[3]; });
             items.splice(0, 0, head);
             return {
-                kind: "select",
+                kind: "Select",
                 span: location(),
                 children: items,
             } 
           },
         peg$c4 = function(identifier) {
             return {
-              kind: "primitiveProperty",
+              kind: "PrimitiveProperty",
               span: location(),
               propertyName: identifier
             };
@@ -172,7 +172,7 @@
         peg$c6 = peg$literalExpectation("_", false),
         peg$c7 = peg$anyExpectation(),
         peg$c8 = function(text) {
-        	  return { kind: "error", span: location() };
+        	  return { kind: "Error", span: location() };
           },
         peg$c9 = peg$otherExpectation("trivia"),
         peg$c10 = /^[ \t\n\r]/,

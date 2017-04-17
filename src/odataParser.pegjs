@@ -8,7 +8,7 @@ select
   	var items = tail.map(function(x) { return x[3]; });
     items.splice(0, 0, head);
     return {
-        kind: "select",
+        kind: "Select",
         span: location(),
         children: items,
     } 
@@ -26,7 +26,7 @@ selectProperty
 primitiveProperty 
   = identifier:odataIdentifier {
     return {
-      kind: "primitiveProperty",
+      kind: "PrimitiveProperty",
       span: location(),
       propertyName: identifier
     };
@@ -39,7 +39,7 @@ identifierCharacter = ALPHA / "_" / DIGIT // plus Unicode characters from the ca
 
 error 
   = text:$.+ {
-	  return { kind: "error", span: location() };
+	  return { kind: "Error", span: location() };
   }
 
 _ "trivia" = (whitespace / comment)*
