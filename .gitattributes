@@ -64,4 +64,4 @@
 
 package.json text eol=lf
 *.pegjs text eol=lf
-scripts/OData/Parser.js text eol=lf
+src/odataParser.js text eol=lf

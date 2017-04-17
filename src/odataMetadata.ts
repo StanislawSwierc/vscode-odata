@@ -61,10 +61,15 @@ export interface IMetadata {
 }
 
 export class ODataMetadataParser {
+
+    parse(text: string): IMetadata {
+        return this.parseDocument(new XmlDocument(text));
+    }
+
     parseDocument(document: XmlDocument): IMetadata {
-        let edmx = document.childNamed("edmx:Edmx")[0];
+        let dataServices = document.childNamed("edmx:DataServices");
         return <IMetadata>{
-            schemas: this.parseCollection(edmx, "Schema", (e) => this.parseSchema(e))
+            schemas: this.parseCollection(dataServices, "Schema", (e) => this.parseSchema(e))
         };
     }
 

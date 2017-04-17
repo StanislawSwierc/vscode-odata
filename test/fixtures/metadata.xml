@@ -1,0 +1,2392 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+  <edmx:DataServices>
+    <Schema Namespace="Microsoft.VisualStudio.Services.Analytics.Model" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+      <EntityType Name="WorkItemRevision">
+        <Key>
+          <PropertyRef Name="WorkItemId" />
+          <PropertyRef Name="Revision" />
+        </Key>
+        <Property Name="WorkItemId" Type="Edm.Int32" Nullable="false">
+          <Annotation Term="Display.DisplayName" String="Work Item Id" />
+          <Annotation Term="Ref.ReferenceName" String="System.Id" />
+        </Property>
+        <Property Name="Revision" Type="Edm.Int32" Nullable="false">
+          <Annotation Term="Display.DisplayName" String="Revision" />
+          <Annotation Term="Ref.ReferenceName" String="System.Rev" />
+        </Property>
+        <Property Name="RevisedDate" Type="Edm.DateTimeOffset">
+          <Annotation Term="Display.DisplayName" String="Revised Date" />
+          <Annotation Term="Ref.ReferenceName" String="System.RevisedDate" />
+        </Property>
+        <Property Name="RevisedDateSK" Type="Edm.Int32" />
+        <Property Name="DateSK" Type="Edm.Int32" />
+        <Property Name="IsCurrent" Type="Edm.Boolean" Nullable="false">
+          <Annotation Term="Display.DisplayName" String="Is Current" />
+        </Property>
+        <Property Name="IsLastRevisionOfDay" Type="Edm.Boolean" Nullable="false">
+          <Annotation Term="Display.DisplayName" String="Is Last Revision Of Day" />
+        </Property>
+        <Property Name="AnalyticsUpdatedDate" Type="Edm.DateTimeOffset" />
+        <Property Name="ProjectSK" Type="Edm.Guid" Nullable="false" />
+        <Property Name="WorkItemRevisionSK" Type="Edm.Int32" Nullable="false" />
+        <Property Name="AreaSK" Type="Edm.Guid" />
+        <Property Name="IterationSK" Type="Edm.Guid" />
+        <Property Name="AssignedToUserSK" Type="Edm.Guid" />
+        <Property Name="ChangedByUserSK" Type="Edm.Guid" />
+        <Property Name="CreatedByUserSK" Type="Edm.Guid" />
+        <Property Name="ActivatedByUserSK" Type="Edm.Guid" />
+        <Property Name="ClosedByUserSK" Type="Edm.Guid" />
+        <Property Name="ResolvedByUserSK" Type="Edm.Guid" />
+        <Property Name="Watermark" Type="Edm.Int32">
+          <Annotation Term="Display.DisplayName" String="Watermark" />
+          <Annotation Term="Ref.ReferenceName" String="System.Watermark" />
+        </Property>
+        <Property Name="Title" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Title" />
+          <Annotation Term="Ref.ReferenceName" String="System.Title" />
+        </Property>
+        <Property Name="WorkItemType" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Work Item Type" />
+          <Annotation Term="Ref.ReferenceName" String="System.WorkItemType" />
+        </Property>
+        <Property Name="ChangedDate" Type="Edm.DateTimeOffset">
+          <Annotation Term="Display.DisplayName" String="Changed Date" />
+          <Annotation Term="Ref.ReferenceName" String="System.ChangedDate" />
+        </Property>
+        <Property Name="CreatedDate" Type="Edm.DateTimeOffset">
+          <Annotation Term="Display.DisplayName" String="Created Date" />
+          <Annotation Term="Ref.ReferenceName" String="System.CreatedDate" />
+        </Property>
+        <Property Name="State" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="State" />
+          <Annotation Term="Ref.ReferenceName" String="System.State" />
+        </Property>
+        <Property Name="Reason" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Reason" />
+          <Annotation Term="Ref.ReferenceName" String="System.Reason" />
+        </Property>
+        <Property Name="FoundIn" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Found In" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Build.FoundIn" />
+        </Property>
+        <Property Name="IntegrationBuild" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Integration Build" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Build.IntegrationBuild" />
+        </Property>
+        <Property Name="ActivatedDate" Type="Edm.DateTimeOffset">
+          <Annotation Term="Display.DisplayName" String="Activated Date" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.ActivatedDate" />
+        </Property>
+        <Property Name="Activity" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Activity" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.Activity" />
+        </Property>
+        <Property Name="BacklogPriority" Type="Edm.Double">
+          <Annotation Term="Display.DisplayName" String="Backlog Priority" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.BacklogPriority" />
+        </Property>
+        <Property Name="BusinessValue" Type="Edm.Int32">
+          <Annotation Term="Display.DisplayName" String="Business Value" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.BusinessValue" />
+        </Property>
+        <Property Name="ClosedDate" Type="Edm.DateTimeOffset">
+          <Annotation Term="Display.DisplayName" String="Closed Date" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.ClosedDate" />
+        </Property>
+        <Property Name="Discipline" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Discipline" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.Discipline" />
+        </Property>
+        <Property Name="Issue" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Issue" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.Issue" />
+        </Property>
+        <Property Name="Priority" Type="Edm.Int32">
+          <Annotation Term="Display.DisplayName" String="Priority" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.Priority" />
+        </Property>
+        <Property Name="Rating" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Rating" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.Rating" />
+        </Property>
+        <Property Name="ResolvedDate" Type="Edm.DateTimeOffset">
+          <Annotation Term="Display.DisplayName" String="Resolved Date" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.ResolvedDate" />
+        </Property>
+        <Property Name="ResolvedReason" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Resolved Reason" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.ResolvedReason" />
+        </Property>
+        <Property Name="Risk" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Risk" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.Risk" />
+        </Property>
+        <Property Name="Severity" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Severity" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.Severity" />
+        </Property>
+        <Property Name="StackRank" Type="Edm.Double">
+          <Annotation Term="Display.DisplayName" String="Stack Rank" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.StackRank" />
+        </Property>
+        <Property Name="TimeCriticality" Type="Edm.Double">
+          <Annotation Term="Display.DisplayName" String="Time Criticality" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.TimeCriticality" />
+        </Property>
+        <Property Name="Triage" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Triage" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.Triage" />
+        </Property>
+        <Property Name="ValueArea" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Value Area" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.ValueArea" />
+        </Property>
+        <Property Name="CompletedWork" Type="Edm.Double">
+          <Annotation Term="Display.DisplayName" String="Completed Work" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Scheduling.CompletedWork" />
+        </Property>
+        <Property Name="DueDate" Type="Edm.DateTimeOffset">
+          <Annotation Term="Display.DisplayName" String="Due Date" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Scheduling.DueDate" />
+        </Property>
+        <Property Name="Effort" Type="Edm.Double">
+          <Annotation Term="Display.DisplayName" String="Effort" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Scheduling.Effort" />
+        </Property>
+        <Property Name="FinishDate" Type="Edm.DateTimeOffset">
+          <Annotation Term="Display.DisplayName" String="Finish Date" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Scheduling.FinishDate" />
+        </Property>
+        <Property Name="OriginalEstimate" Type="Edm.Double">
+          <Annotation Term="Display.DisplayName" String="Original Estimate" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Scheduling.OriginalEstimate" />
+        </Property>
+        <Property Name="RemainingWork" Type="Edm.Double">
+          <Annotation Term="Display.DisplayName" String="Remaining Work" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Scheduling.RemainingWork" />
+        </Property>
+        <Property Name="Size" Type="Edm.Double">
+          <Annotation Term="Display.DisplayName" String="Size" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Scheduling.Size" />
+        </Property>
+        <Property Name="StartDate" Type="Edm.DateTimeOffset">
+          <Annotation Term="Display.DisplayName" String="Start Date" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Scheduling.StartDate" />
+        </Property>
+        <Property Name="StoryPoints" Type="Edm.Double">
+          <Annotation Term="Display.DisplayName" String="Story Points" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Scheduling.StoryPoints" />
+        </Property>
+        <Property Name="TargetDate" Type="Edm.DateTimeOffset">
+          <Annotation Term="Display.DisplayName" String="Target Date" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Scheduling.TargetDate" />
+        </Property>
+        <Property Name="Blocked" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Blocked" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.Blocked" />
+        </Property>
+        <Property Name="Committed" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Committed" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.Committed" />
+        </Property>
+        <Property Name="Escalate" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Escalate" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.Escalate" />
+        </Property>
+        <Property Name="FoundInEnvironment" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Found In Environment" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.FoundInEnvironment" />
+        </Property>
+        <Property Name="HowFound" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="How Found" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.HowFound" />
+        </Property>
+        <Property Name="Probability" Type="Edm.Int32">
+          <Annotation Term="Display.DisplayName" String="Probability" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.Probability" />
+        </Property>
+        <Property Name="RequirementType" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Requirement Type" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.RequirementType" />
+        </Property>
+        <Property Name="RequiresReview" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Requires Review" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.RequiresReview" />
+        </Property>
+        <Property Name="RequiresTest" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Requires Test" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.RequiresTest" />
+        </Property>
+        <Property Name="RootCause" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Root Cause" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.RootCause" />
+        </Property>
+        <Property Name="SubjectMatterExpert1" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Subject Matter Expert 1" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.SubjectMatterExpert1" />
+        </Property>
+        <Property Name="SubjectMatterExpert2" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Subject Matter Expert 2" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.SubjectMatterExpert2" />
+        </Property>
+        <Property Name="SubjectMatterExpert3" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Subject Matter Expert 3" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.SubjectMatterExpert3" />
+        </Property>
+        <Property Name="TargetResolveDate" Type="Edm.DateTimeOffset">
+          <Annotation Term="Display.DisplayName" String="Target Resolve Date" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.TargetResolveDate" />
+        </Property>
+        <Property Name="TaskType" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Task Type" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.TaskType" />
+        </Property>
+        <Property Name="UserAcceptanceTest" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="User Acceptance Test" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.UserAcceptanceTest" />
+        </Property>
+        <Property Name="ParentWorkItemId" Type="Edm.Int32">
+          <Annotation Term="Display.DisplayName" String="Parent Work Item Id" />
+        </Property>
+        <Property Name="TagNames" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Tags" />
+          <Annotation Term="Ref.ReferenceName" String="System.Tags" />
+        </Property>
+        <Property Name="StateCategory" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="State Category" />
+        </Property>
+        <Property Name="AutomatedTestId" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Automated Test Id" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.TCM.AutomatedTestId" />
+        </Property>
+        <Property Name="AutomatedTestName" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Automated Test Name" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.TCM.AutomatedTestName" />
+        </Property>
+        <Property Name="AutomatedTestStorage" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Automated Test Storage" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.TCM.AutomatedTestStorage" />
+        </Property>
+        <Property Name="AutomatedTestType" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Automated Test Type" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.TCM.AutomatedTestType" />
+        </Property>
+        <Property Name="AutomationStatus" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Automation Status" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.TCM.AutomationStatus" />
+        </Property>
+        <Property Name="Count" Type="Edm.Int64" />
+        <NavigationProperty Name="Date" Type="Microsoft.VisualStudio.Services.Analytics.Model.CalendarDate">
+          <ReferentialConstraint Property="DateSK" ReferencedProperty="DateSK" />
+        </NavigationProperty>
+        <NavigationProperty Name="BoardLocations" Type="Collection(Microsoft.VisualStudio.Services.Analytics.Model.BoardLocation)" />
+        <NavigationProperty Name="Teams" Type="Collection(Microsoft.VisualStudio.Services.Analytics.Model.Team)" />
+        <NavigationProperty Name="WorkItem" Type="Microsoft.VisualStudio.Services.Analytics.Model.WorkItem" Nullable="false">
+          <ReferentialConstraint Property="WorkItemId" ReferencedProperty="WorkItemId" />
+        </NavigationProperty>
+        <NavigationProperty Name="Project" Type="Microsoft.VisualStudio.Services.Analytics.Model.Project" Nullable="false">
+          <ReferentialConstraint Property="ProjectSK" ReferencedProperty="ProjectSK" />
+        </NavigationProperty>
+        <NavigationProperty Name="Area" Type="Microsoft.VisualStudio.Services.Analytics.Model.Area">
+          <ReferentialConstraint Property="AreaSK" ReferencedProperty="AreaSK" />
+        </NavigationProperty>
+        <NavigationProperty Name="Iteration" Type="Microsoft.VisualStudio.Services.Analytics.Model.Iteration">
+          <ReferentialConstraint Property="IterationSK" ReferencedProperty="IterationSK" />
+        </NavigationProperty>
+        <NavigationProperty Name="AssignedTo" Type="Microsoft.VisualStudio.Services.Analytics.Model.User">
+          <ReferentialConstraint Property="AssignedToUserSK" ReferencedProperty="UserSK" />
+        </NavigationProperty>
+        <NavigationProperty Name="ChangedBy" Type="Microsoft.VisualStudio.Services.Analytics.Model.User">
+          <ReferentialConstraint Property="ChangedByUserSK" ReferencedProperty="UserSK" />
+        </NavigationProperty>
+        <NavigationProperty Name="CreatedBy" Type="Microsoft.VisualStudio.Services.Analytics.Model.User">
+          <ReferentialConstraint Property="CreatedByUserSK" ReferencedProperty="UserSK" />
+        </NavigationProperty>
+        <NavigationProperty Name="ActivatedBy" Type="Microsoft.VisualStudio.Services.Analytics.Model.User">
+          <ReferentialConstraint Property="ActivatedByUserSK" ReferencedProperty="UserSK" />
+        </NavigationProperty>
+        <NavigationProperty Name="ClosedBy" Type="Microsoft.VisualStudio.Services.Analytics.Model.User">
+          <ReferentialConstraint Property="ClosedByUserSK" ReferencedProperty="UserSK" />
+        </NavigationProperty>
+        <NavigationProperty Name="ResolvedBy" Type="Microsoft.VisualStudio.Services.Analytics.Model.User">
+          <ReferentialConstraint Property="ResolvedByUserSK" ReferencedProperty="UserSK" />
+        </NavigationProperty>
+        <NavigationProperty Name="Tags" Type="Collection(Microsoft.VisualStudio.Services.Analytics.Model.Tag)" />
+      </EntityType>
+      <EntityType Name="WorkItem">
+        <Key>
+          <PropertyRef Name="WorkItemId" />
+        </Key>
+        <Property Name="WorkItemId" Type="Edm.Int32" Nullable="false">
+          <Annotation Term="Display.DisplayName" String="Work Item Id" />
+          <Annotation Term="Ref.ReferenceName" String="System.Id" />
+        </Property>
+        <Property Name="InProgressDate" Type="Edm.DateTimeOffset">
+          <Annotation Term="Display.DisplayName" String="InProgress Date" />
+        </Property>
+        <Property Name="CompletedDate" Type="Edm.DateTimeOffset">
+          <Annotation Term="Display.DisplayName" String="Completed Date" />
+        </Property>
+        <Property Name="LeadTimeDays" Type="Edm.Double">
+          <Annotation Term="Display.DisplayName" String="Lead Time Days" />
+        </Property>
+        <Property Name="CycleTimeDays" Type="Edm.Double">
+          <Annotation Term="Display.DisplayName" String="Cycle Time Days" />
+        </Property>
+        <Property Name="InProgressDateSK" Type="Edm.Int32" />
+        <Property Name="CompletedDateSK" Type="Edm.Int32" />
+        <Property Name="AnalyticsUpdatedDate" Type="Edm.DateTimeOffset" />
+        <Property Name="ProjectSK" Type="Edm.Guid" Nullable="false" />
+        <Property Name="WorkItemRevisionSK" Type="Edm.Int32" Nullable="false" />
+        <Property Name="AreaSK" Type="Edm.Guid" />
+        <Property Name="IterationSK" Type="Edm.Guid" />
+        <Property Name="AssignedToUserSK" Type="Edm.Guid" />
+        <Property Name="ChangedByUserSK" Type="Edm.Guid" />
+        <Property Name="CreatedByUserSK" Type="Edm.Guid" />
+        <Property Name="ActivatedByUserSK" Type="Edm.Guid" />
+        <Property Name="ClosedByUserSK" Type="Edm.Guid" />
+        <Property Name="ResolvedByUserSK" Type="Edm.Guid" />
+        <Property Name="Revision" Type="Edm.Int32" Nullable="false">
+          <Annotation Term="Display.DisplayName" String="Revision" />
+          <Annotation Term="Ref.ReferenceName" String="System.Rev" />
+        </Property>
+        <Property Name="Watermark" Type="Edm.Int32">
+          <Annotation Term="Display.DisplayName" String="Watermark" />
+          <Annotation Term="Ref.ReferenceName" String="System.Watermark" />
+        </Property>
+        <Property Name="Title" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Title" />
+          <Annotation Term="Ref.ReferenceName" String="System.Title" />
+        </Property>
+        <Property Name="WorkItemType" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Work Item Type" />
+          <Annotation Term="Ref.ReferenceName" String="System.WorkItemType" />
+        </Property>
+        <Property Name="ChangedDate" Type="Edm.DateTimeOffset">
+          <Annotation Term="Display.DisplayName" String="Changed Date" />
+          <Annotation Term="Ref.ReferenceName" String="System.ChangedDate" />
+        </Property>
+        <Property Name="CreatedDate" Type="Edm.DateTimeOffset">
+          <Annotation Term="Display.DisplayName" String="Created Date" />
+          <Annotation Term="Ref.ReferenceName" String="System.CreatedDate" />
+        </Property>
+        <Property Name="State" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="State" />
+          <Annotation Term="Ref.ReferenceName" String="System.State" />
+        </Property>
+        <Property Name="Reason" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Reason" />
+          <Annotation Term="Ref.ReferenceName" String="System.Reason" />
+        </Property>
+        <Property Name="FoundIn" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Found In" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Build.FoundIn" />
+        </Property>
+        <Property Name="IntegrationBuild" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Integration Build" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Build.IntegrationBuild" />
+        </Property>
+        <Property Name="ActivatedDate" Type="Edm.DateTimeOffset">
+          <Annotation Term="Display.DisplayName" String="Activated Date" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.ActivatedDate" />
+        </Property>
+        <Property Name="Activity" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Activity" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.Activity" />
+        </Property>
+        <Property Name="BacklogPriority" Type="Edm.Double">
+          <Annotation Term="Display.DisplayName" String="Backlog Priority" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.BacklogPriority" />
+        </Property>
+        <Property Name="BusinessValue" Type="Edm.Int32">
+          <Annotation Term="Display.DisplayName" String="Business Value" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.BusinessValue" />
+        </Property>
+        <Property Name="ClosedDate" Type="Edm.DateTimeOffset">
+          <Annotation Term="Display.DisplayName" String="Closed Date" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.ClosedDate" />
+        </Property>
+        <Property Name="Discipline" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Discipline" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.Discipline" />
+        </Property>
+        <Property Name="Issue" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Issue" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.Issue" />
+        </Property>
+        <Property Name="Priority" Type="Edm.Int32">
+          <Annotation Term="Display.DisplayName" String="Priority" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.Priority" />
+        </Property>
+        <Property Name="Rating" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Rating" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.Rating" />
+        </Property>
+        <Property Name="ResolvedDate" Type="Edm.DateTimeOffset">
+          <Annotation Term="Display.DisplayName" String="Resolved Date" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.ResolvedDate" />
+        </Property>
+        <Property Name="ResolvedReason" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Resolved Reason" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.ResolvedReason" />
+        </Property>
+        <Property Name="Risk" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Risk" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.Risk" />
+        </Property>
+        <Property Name="Severity" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Severity" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.Severity" />
+        </Property>
+        <Property Name="StackRank" Type="Edm.Double">
+          <Annotation Term="Display.DisplayName" String="Stack Rank" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.StackRank" />
+        </Property>
+        <Property Name="TimeCriticality" Type="Edm.Double">
+          <Annotation Term="Display.DisplayName" String="Time Criticality" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.TimeCriticality" />
+        </Property>
+        <Property Name="Triage" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Triage" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.Triage" />
+        </Property>
+        <Property Name="ValueArea" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Value Area" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.ValueArea" />
+        </Property>
+        <Property Name="CompletedWork" Type="Edm.Double">
+          <Annotation Term="Display.DisplayName" String="Completed Work" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Scheduling.CompletedWork" />
+        </Property>
+        <Property Name="DueDate" Type="Edm.DateTimeOffset">
+          <Annotation Term="Display.DisplayName" String="Due Date" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Scheduling.DueDate" />
+        </Property>
+        <Property Name="Effort" Type="Edm.Double">
+          <Annotation Term="Display.DisplayName" String="Effort" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Scheduling.Effort" />
+        </Property>
+        <Property Name="FinishDate" Type="Edm.DateTimeOffset">
+          <Annotation Term="Display.DisplayName" String="Finish Date" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Scheduling.FinishDate" />
+        </Property>
+        <Property Name="OriginalEstimate" Type="Edm.Double">
+          <Annotation Term="Display.DisplayName" String="Original Estimate" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Scheduling.OriginalEstimate" />
+        </Property>
+        <Property Name="RemainingWork" Type="Edm.Double">
+          <Annotation Term="Display.DisplayName" String="Remaining Work" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Scheduling.RemainingWork" />
+        </Property>
+        <Property Name="Size" Type="Edm.Double">
+          <Annotation Term="Display.DisplayName" String="Size" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Scheduling.Size" />
+        </Property>
+        <Property Name="StartDate" Type="Edm.DateTimeOffset">
+          <Annotation Term="Display.DisplayName" String="Start Date" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Scheduling.StartDate" />
+        </Property>
+        <Property Name="StoryPoints" Type="Edm.Double">
+          <Annotation Term="Display.DisplayName" String="Story Points" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Scheduling.StoryPoints" />
+        </Property>
+        <Property Name="TargetDate" Type="Edm.DateTimeOffset">
+          <Annotation Term="Display.DisplayName" String="Target Date" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Scheduling.TargetDate" />
+        </Property>
+        <Property Name="Blocked" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Blocked" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.Blocked" />
+        </Property>
+        <Property Name="Committed" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Committed" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.Committed" />
+        </Property>
+        <Property Name="Escalate" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Escalate" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.Escalate" />
+        </Property>
+        <Property Name="FoundInEnvironment" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Found In Environment" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.FoundInEnvironment" />
+        </Property>
+        <Property Name="HowFound" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="How Found" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.HowFound" />
+        </Property>
+        <Property Name="Probability" Type="Edm.Int32">
+          <Annotation Term="Display.DisplayName" String="Probability" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.Probability" />
+        </Property>
+        <Property Name="RequirementType" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Requirement Type" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.RequirementType" />
+        </Property>
+        <Property Name="RequiresReview" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Requires Review" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.RequiresReview" />
+        </Property>
+        <Property Name="RequiresTest" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Requires Test" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.RequiresTest" />
+        </Property>
+        <Property Name="RootCause" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Root Cause" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.RootCause" />
+        </Property>
+        <Property Name="SubjectMatterExpert1" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Subject Matter Expert 1" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.SubjectMatterExpert1" />
+        </Property>
+        <Property Name="SubjectMatterExpert2" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Subject Matter Expert 2" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.SubjectMatterExpert2" />
+        </Property>
+        <Property Name="SubjectMatterExpert3" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Subject Matter Expert 3" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.SubjectMatterExpert3" />
+        </Property>
+        <Property Name="TargetResolveDate" Type="Edm.DateTimeOffset">
+          <Annotation Term="Display.DisplayName" String="Target Resolve Date" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.TargetResolveDate" />
+        </Property>
+        <Property Name="TaskType" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Task Type" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.TaskType" />
+        </Property>
+        <Property Name="UserAcceptanceTest" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="User Acceptance Test" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.UserAcceptanceTest" />
+        </Property>
+        <Property Name="ParentWorkItemId" Type="Edm.Int32">
+          <Annotation Term="Display.DisplayName" String="Parent Work Item Id" />
+        </Property>
+        <Property Name="TagNames" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Tags" />
+          <Annotation Term="Ref.ReferenceName" String="System.Tags" />
+        </Property>
+        <Property Name="StateCategory" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="State Category" />
+        </Property>
+        <Property Name="AutomatedTestId" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Automated Test Id" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.TCM.AutomatedTestId" />
+        </Property>
+        <Property Name="AutomatedTestName" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Automated Test Name" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.TCM.AutomatedTestName" />
+        </Property>
+        <Property Name="AutomatedTestStorage" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Automated Test Storage" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.TCM.AutomatedTestStorage" />
+        </Property>
+        <Property Name="AutomatedTestType" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Automated Test Type" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.TCM.AutomatedTestType" />
+        </Property>
+        <Property Name="AutomationStatus" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Automation Status" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.TCM.AutomationStatus" />
+        </Property>
+        <Property Name="Count" Type="Edm.Int64" />
+        <NavigationProperty Name="BoardLocations" Type="Collection(Microsoft.VisualStudio.Services.Analytics.Model.BoardLocation)" />
+        <NavigationProperty Name="Teams" Type="Collection(Microsoft.VisualStudio.Services.Analytics.Model.Team)" />
+        <NavigationProperty Name="Revisions" Type="Collection(Microsoft.VisualStudio.Services.Analytics.Model.WorkItemRevision)" />
+        <NavigationProperty Name="Links" Type="Collection(Microsoft.VisualStudio.Services.Analytics.Model.WorkItemLink)" />
+        <NavigationProperty Name="Children" Type="Collection(Microsoft.VisualStudio.Services.Analytics.Model.WorkItem)" />
+        <NavigationProperty Name="Parent" Type="Microsoft.VisualStudio.Services.Analytics.Model.WorkItem">
+          <ReferentialConstraint Property="ParentWorkItemId" ReferencedProperty="WorkItemId" />
+        </NavigationProperty>
+        <NavigationProperty Name="Project" Type="Microsoft.VisualStudio.Services.Analytics.Model.Project" Nullable="false">
+          <ReferentialConstraint Property="ProjectSK" ReferencedProperty="ProjectSK" />
+        </NavigationProperty>
+        <NavigationProperty Name="Area" Type="Microsoft.VisualStudio.Services.Analytics.Model.Area">
+          <ReferentialConstraint Property="AreaSK" ReferencedProperty="AreaSK" />
+        </NavigationProperty>
+        <NavigationProperty Name="Iteration" Type="Microsoft.VisualStudio.Services.Analytics.Model.Iteration">
+          <ReferentialConstraint Property="IterationSK" ReferencedProperty="IterationSK" />
+        </NavigationProperty>
+        <NavigationProperty Name="AssignedTo" Type="Microsoft.VisualStudio.Services.Analytics.Model.User">
+          <ReferentialConstraint Property="AssignedToUserSK" ReferencedProperty="UserSK" />
+        </NavigationProperty>
+        <NavigationProperty Name="ChangedBy" Type="Microsoft.VisualStudio.Services.Analytics.Model.User">
+          <ReferentialConstraint Property="ChangedByUserSK" ReferencedProperty="UserSK" />
+        </NavigationProperty>
+        <NavigationProperty Name="CreatedBy" Type="Microsoft.VisualStudio.Services.Analytics.Model.User">
+          <ReferentialConstraint Property="CreatedByUserSK" ReferencedProperty="UserSK" />
+        </NavigationProperty>
+        <NavigationProperty Name="ActivatedBy" Type="Microsoft.VisualStudio.Services.Analytics.Model.User">
+          <ReferentialConstraint Property="ActivatedByUserSK" ReferencedProperty="UserSK" />
+        </NavigationProperty>
+        <NavigationProperty Name="ClosedBy" Type="Microsoft.VisualStudio.Services.Analytics.Model.User">
+          <ReferentialConstraint Property="ClosedByUserSK" ReferencedProperty="UserSK" />
+        </NavigationProperty>
+        <NavigationProperty Name="ResolvedBy" Type="Microsoft.VisualStudio.Services.Analytics.Model.User">
+          <ReferentialConstraint Property="ResolvedByUserSK" ReferencedProperty="UserSK" />
+        </NavigationProperty>
+        <NavigationProperty Name="Tags" Type="Collection(Microsoft.VisualStudio.Services.Analytics.Model.Tag)" />
+      </EntityType>
+      <EntityType Name="WorkItemSnapshot">
+        <Key>
+          <PropertyRef Name="WorkItemId" />
+          <PropertyRef Name="DateSK" />
+        </Key>
+        <Property Name="WorkItemId" Type="Edm.Int32" Nullable="false">
+          <Annotation Term="Display.DisplayName" String="Work Item Id" />
+          <Annotation Term="Ref.ReferenceName" String="System.Id" />
+        </Property>
+        <Property Name="DateSK" Type="Edm.Int32" />
+        <Property Name="RevisedDate" Type="Edm.DateTimeOffset">
+          <Annotation Term="Display.DisplayName" String="Revised Date" />
+          <Annotation Term="Ref.ReferenceName" String="System.RevisedDate" />
+        </Property>
+        <Property Name="RevisedDateSK" Type="Edm.Int32" />
+        <Property Name="ProjectSK" Type="Edm.Guid" Nullable="false" />
+        <Property Name="WorkItemRevisionSK" Type="Edm.Int32" Nullable="false" />
+        <Property Name="AreaSK" Type="Edm.Guid" />
+        <Property Name="IterationSK" Type="Edm.Guid" />
+        <Property Name="AssignedToUserSK" Type="Edm.Guid" />
+        <Property Name="ChangedByUserSK" Type="Edm.Guid" />
+        <Property Name="CreatedByUserSK" Type="Edm.Guid" />
+        <Property Name="ActivatedByUserSK" Type="Edm.Guid" />
+        <Property Name="ClosedByUserSK" Type="Edm.Guid" />
+        <Property Name="ResolvedByUserSK" Type="Edm.Guid" />
+        <Property Name="Revision" Type="Edm.Int32">
+          <Annotation Term="Display.DisplayName" String="Revision" />
+          <Annotation Term="Ref.ReferenceName" String="System.Rev" />
+        </Property>
+        <Property Name="Watermark" Type="Edm.Int32">
+          <Annotation Term="Display.DisplayName" String="Watermark" />
+          <Annotation Term="Ref.ReferenceName" String="System.Watermark" />
+        </Property>
+        <Property Name="Title" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Title" />
+          <Annotation Term="Ref.ReferenceName" String="System.Title" />
+        </Property>
+        <Property Name="WorkItemType" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Work Item Type" />
+          <Annotation Term="Ref.ReferenceName" String="System.WorkItemType" />
+        </Property>
+        <Property Name="ChangedDate" Type="Edm.DateTimeOffset">
+          <Annotation Term="Display.DisplayName" String="Changed Date" />
+          <Annotation Term="Ref.ReferenceName" String="System.ChangedDate" />
+        </Property>
+        <Property Name="CreatedDate" Type="Edm.DateTimeOffset">
+          <Annotation Term="Display.DisplayName" String="Created Date" />
+          <Annotation Term="Ref.ReferenceName" String="System.CreatedDate" />
+        </Property>
+        <Property Name="State" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="State" />
+          <Annotation Term="Ref.ReferenceName" String="System.State" />
+        </Property>
+        <Property Name="Reason" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Reason" />
+          <Annotation Term="Ref.ReferenceName" String="System.Reason" />
+        </Property>
+        <Property Name="FoundIn" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Found In" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Build.FoundIn" />
+        </Property>
+        <Property Name="IntegrationBuild" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Integration Build" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Build.IntegrationBuild" />
+        </Property>
+        <Property Name="ActivatedDate" Type="Edm.DateTimeOffset">
+          <Annotation Term="Display.DisplayName" String="Activated Date" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.ActivatedDate" />
+        </Property>
+        <Property Name="Activity" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Activity" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.Activity" />
+        </Property>
+        <Property Name="BacklogPriority" Type="Edm.Double">
+          <Annotation Term="Display.DisplayName" String="Backlog Priority" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.BacklogPriority" />
+        </Property>
+        <Property Name="BusinessValue" Type="Edm.Int32">
+          <Annotation Term="Display.DisplayName" String="Business Value" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.BusinessValue" />
+        </Property>
+        <Property Name="ClosedDate" Type="Edm.DateTimeOffset">
+          <Annotation Term="Display.DisplayName" String="Closed Date" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.ClosedDate" />
+        </Property>
+        <Property Name="Discipline" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Discipline" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.Discipline" />
+        </Property>
+        <Property Name="Issue" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Issue" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.Issue" />
+        </Property>
+        <Property Name="Priority" Type="Edm.Int32">
+          <Annotation Term="Display.DisplayName" String="Priority" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.Priority" />
+        </Property>
+        <Property Name="Rating" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Rating" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.Rating" />
+        </Property>
+        <Property Name="ResolvedDate" Type="Edm.DateTimeOffset">
+          <Annotation Term="Display.DisplayName" String="Resolved Date" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.ResolvedDate" />
+        </Property>
+        <Property Name="ResolvedReason" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Resolved Reason" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.ResolvedReason" />
+        </Property>
+        <Property Name="Risk" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Risk" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.Risk" />
+        </Property>
+        <Property Name="Severity" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Severity" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.Severity" />
+        </Property>
+        <Property Name="StackRank" Type="Edm.Double">
+          <Annotation Term="Display.DisplayName" String="Stack Rank" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.StackRank" />
+        </Property>
+        <Property Name="TimeCriticality" Type="Edm.Double">
+          <Annotation Term="Display.DisplayName" String="Time Criticality" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.TimeCriticality" />
+        </Property>
+        <Property Name="Triage" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Triage" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.Triage" />
+        </Property>
+        <Property Name="ValueArea" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Value Area" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.ValueArea" />
+        </Property>
+        <Property Name="CompletedWork" Type="Edm.Double">
+          <Annotation Term="Display.DisplayName" String="Completed Work" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Scheduling.CompletedWork" />
+        </Property>
+        <Property Name="DueDate" Type="Edm.DateTimeOffset">
+          <Annotation Term="Display.DisplayName" String="Due Date" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Scheduling.DueDate" />
+        </Property>
+        <Property Name="Effort" Type="Edm.Double">
+          <Annotation Term="Display.DisplayName" String="Effort" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Scheduling.Effort" />
+        </Property>
+        <Property Name="FinishDate" Type="Edm.DateTimeOffset">
+          <Annotation Term="Display.DisplayName" String="Finish Date" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Scheduling.FinishDate" />
+        </Property>
+        <Property Name="OriginalEstimate" Type="Edm.Double">
+          <Annotation Term="Display.DisplayName" String="Original Estimate" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Scheduling.OriginalEstimate" />
+        </Property>
+        <Property Name="RemainingWork" Type="Edm.Double">
+          <Annotation Term="Display.DisplayName" String="Remaining Work" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Scheduling.RemainingWork" />
+        </Property>
+        <Property Name="Size" Type="Edm.Double">
+          <Annotation Term="Display.DisplayName" String="Size" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Scheduling.Size" />
+        </Property>
+        <Property Name="StartDate" Type="Edm.DateTimeOffset">
+          <Annotation Term="Display.DisplayName" String="Start Date" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Scheduling.StartDate" />
+        </Property>
+        <Property Name="StoryPoints" Type="Edm.Double">
+          <Annotation Term="Display.DisplayName" String="Story Points" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Scheduling.StoryPoints" />
+        </Property>
+        <Property Name="TargetDate" Type="Edm.DateTimeOffset">
+          <Annotation Term="Display.DisplayName" String="Target Date" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Scheduling.TargetDate" />
+        </Property>
+        <Property Name="Blocked" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Blocked" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.Blocked" />
+        </Property>
+        <Property Name="Committed" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Committed" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.Committed" />
+        </Property>
+        <Property Name="Escalate" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Escalate" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.Escalate" />
+        </Property>
+        <Property Name="FoundInEnvironment" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Found In Environment" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.FoundInEnvironment" />
+        </Property>
+        <Property Name="HowFound" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="How Found" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.HowFound" />
+        </Property>
+        <Property Name="Probability" Type="Edm.Int32">
+          <Annotation Term="Display.DisplayName" String="Probability" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.Probability" />
+        </Property>
+        <Property Name="RequirementType" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Requirement Type" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.RequirementType" />
+        </Property>
+        <Property Name="RequiresReview" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Requires Review" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.RequiresReview" />
+        </Property>
+        <Property Name="RequiresTest" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Requires Test" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.RequiresTest" />
+        </Property>
+        <Property Name="RootCause" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Root Cause" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.RootCause" />
+        </Property>
+        <Property Name="SubjectMatterExpert1" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Subject Matter Expert 1" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.SubjectMatterExpert1" />
+        </Property>
+        <Property Name="SubjectMatterExpert2" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Subject Matter Expert 2" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.SubjectMatterExpert2" />
+        </Property>
+        <Property Name="SubjectMatterExpert3" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Subject Matter Expert 3" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.SubjectMatterExpert3" />
+        </Property>
+        <Property Name="TargetResolveDate" Type="Edm.DateTimeOffset">
+          <Annotation Term="Display.DisplayName" String="Target Resolve Date" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.TargetResolveDate" />
+        </Property>
+        <Property Name="TaskType" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Task Type" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.TaskType" />
+        </Property>
+        <Property Name="UserAcceptanceTest" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="User Acceptance Test" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.UserAcceptanceTest" />
+        </Property>
+        <Property Name="ParentWorkItemId" Type="Edm.Int32">
+          <Annotation Term="Display.DisplayName" String="Parent Work Item Id" />
+        </Property>
+        <Property Name="TagNames" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Tags" />
+          <Annotation Term="Ref.ReferenceName" String="System.Tags" />
+        </Property>
+        <Property Name="StateCategory" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="State Category" />
+        </Property>
+        <Property Name="AutomatedTestId" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Automated Test Id" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.TCM.AutomatedTestId" />
+        </Property>
+        <Property Name="AutomatedTestName" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Automated Test Name" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.TCM.AutomatedTestName" />
+        </Property>
+        <Property Name="AutomatedTestStorage" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Automated Test Storage" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.TCM.AutomatedTestStorage" />
+        </Property>
+        <Property Name="AutomatedTestType" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Automated Test Type" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.TCM.AutomatedTestType" />
+        </Property>
+        <Property Name="AutomationStatus" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Automation Status" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.TCM.AutomationStatus" />
+        </Property>
+        <Property Name="Count" Type="Edm.Int64" Nullable="false" />
+        <NavigationProperty Name="Date" Type="Microsoft.VisualStudio.Services.Analytics.Model.CalendarDate">
+          <ReferentialConstraint Property="DateSK" ReferencedProperty="DateSK" />
+        </NavigationProperty>
+        <NavigationProperty Name="Teams" Type="Collection(Microsoft.VisualStudio.Services.Analytics.Model.Team)" />
+        <NavigationProperty Name="Project" Type="Microsoft.VisualStudio.Services.Analytics.Model.Project" Nullable="false">
+          <ReferentialConstraint Property="ProjectSK" ReferencedProperty="ProjectSK" />
+        </NavigationProperty>
+        <NavigationProperty Name="Area" Type="Microsoft.VisualStudio.Services.Analytics.Model.Area">
+          <ReferentialConstraint Property="AreaSK" ReferencedProperty="AreaSK" />
+        </NavigationProperty>
+        <NavigationProperty Name="Iteration" Type="Microsoft.VisualStudio.Services.Analytics.Model.Iteration">
+          <ReferentialConstraint Property="IterationSK" ReferencedProperty="IterationSK" />
+        </NavigationProperty>
+        <NavigationProperty Name="AssignedTo" Type="Microsoft.VisualStudio.Services.Analytics.Model.User">
+          <ReferentialConstraint Property="AssignedToUserSK" ReferencedProperty="UserSK" />
+        </NavigationProperty>
+        <NavigationProperty Name="ChangedBy" Type="Microsoft.VisualStudio.Services.Analytics.Model.User">
+          <ReferentialConstraint Property="ChangedByUserSK" ReferencedProperty="UserSK" />
+        </NavigationProperty>
+        <NavigationProperty Name="CreatedBy" Type="Microsoft.VisualStudio.Services.Analytics.Model.User">
+          <ReferentialConstraint Property="CreatedByUserSK" ReferencedProperty="UserSK" />
+        </NavigationProperty>
+        <NavigationProperty Name="ActivatedBy" Type="Microsoft.VisualStudio.Services.Analytics.Model.User">
+          <ReferentialConstraint Property="ActivatedByUserSK" ReferencedProperty="UserSK" />
+        </NavigationProperty>
+        <NavigationProperty Name="ClosedBy" Type="Microsoft.VisualStudio.Services.Analytics.Model.User">
+          <ReferentialConstraint Property="ClosedByUserSK" ReferencedProperty="UserSK" />
+        </NavigationProperty>
+        <NavigationProperty Name="ResolvedBy" Type="Microsoft.VisualStudio.Services.Analytics.Model.User">
+          <ReferentialConstraint Property="ResolvedByUserSK" ReferencedProperty="UserSK" />
+        </NavigationProperty>
+        <NavigationProperty Name="Tags" Type="Collection(Microsoft.VisualStudio.Services.Analytics.Model.Tag)" />
+      </EntityType>
+      <EntityType Name="WorkItemBoardSnapshot">
+        <Key>
+          <PropertyRef Name="WorkItemId" />
+          <PropertyRef Name="DateSK" />
+          <PropertyRef Name="BoardLocationSK" />
+        </Key>
+        <Property Name="WorkItemId" Type="Edm.Int32" Nullable="false">
+          <Annotation Term="Display.DisplayName" String="Work Item Id" />
+          <Annotation Term="Ref.ReferenceName" String="System.Id" />
+        </Property>
+        <Property Name="DateSK" Type="Edm.Int32" />
+        <Property Name="BoardLocationSK" Type="Edm.Int32" />
+        <Property Name="TeamSK" Type="Edm.Guid" />
+        <Property Name="ColumnId" Type="Edm.Guid" Nullable="false">
+          <Annotation Term="Display.DisplayName" String="Column Id" />
+        </Property>
+        <Property Name="ColumnName" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Column Name" />
+        </Property>
+        <Property Name="ColumnOrder" Type="Edm.Int32">
+          <Annotation Term="Display.DisplayName" String="Column Order" />
+        </Property>
+        <Property Name="ColumnItemLimit" Type="Edm.Int32">
+          <Annotation Term="Display.DisplayName" String="Column Item Limit" />
+        </Property>
+        <Property Name="IsDone" Type="Edm.Boolean">
+          <Annotation Term="Display.DisplayName" String="Is Done" />
+        </Property>
+        <Property Name="BoardId" Type="Edm.Guid" Nullable="false">
+          <Annotation Term="Display.DisplayName" String="Board Id" />
+        </Property>
+        <Property Name="BoardCategoryReferenceName" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Board Category Reference Name" />
+        </Property>
+        <Property Name="BoardName" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Board Name" />
+        </Property>
+        <Property Name="BoardLevel" Type="Edm.Int32">
+          <Annotation Term="Display.DisplayName" String="Board Level" />
+        </Property>
+        <Property Name="IsBoardVisible" Type="Edm.Boolean" Nullable="false">
+          <Annotation Term="Display.DisplayName" String="Is Board Visible" />
+        </Property>
+        <Property Name="LaneId" Type="Edm.Guid" Nullable="false">
+          <Annotation Term="Display.DisplayName" String="Lane Id" />
+        </Property>
+        <Property Name="LaneName" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Lane Name" />
+        </Property>
+        <Property Name="LaneOrder" Type="Edm.Int32">
+          <Annotation Term="Display.DisplayName" String="Lane Order" />
+        </Property>
+        <Property Name="IsColumnSplit" Type="Edm.Boolean">
+          <Annotation Term="Display.DisplayName" String="Is Column Split" />
+        </Property>
+        <Property Name="IsCurrent" Type="Edm.Boolean">
+          <Annotation Term="Display.DisplayName" String="Is Current" />
+        </Property>
+        <Property Name="Done" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Done" />
+        </Property>
+        <Property Name="IsDefaultLane" Type="Edm.Boolean" Nullable="false">
+          <Annotation Term="Display.DisplayName" String="Is Default Lane" />
+        </Property>
+        <Property Name="ProjectSK" Type="Edm.Guid" Nullable="false" />
+        <Property Name="WorkItemRevisionSK" Type="Edm.Int32" Nullable="false" />
+        <Property Name="AreaSK" Type="Edm.Guid" />
+        <Property Name="IterationSK" Type="Edm.Guid" />
+        <Property Name="AssignedToUserSK" Type="Edm.Guid" />
+        <Property Name="ChangedByUserSK" Type="Edm.Guid" />
+        <Property Name="CreatedByUserSK" Type="Edm.Guid" />
+        <Property Name="ActivatedByUserSK" Type="Edm.Guid" />
+        <Property Name="ClosedByUserSK" Type="Edm.Guid" />
+        <Property Name="ResolvedByUserSK" Type="Edm.Guid" />
+        <Property Name="Revision" Type="Edm.Int32">
+          <Annotation Term="Display.DisplayName" String="Revision" />
+          <Annotation Term="Ref.ReferenceName" String="System.Rev" />
+        </Property>
+        <Property Name="Watermark" Type="Edm.Int32">
+          <Annotation Term="Display.DisplayName" String="Watermark" />
+          <Annotation Term="Ref.ReferenceName" String="System.Watermark" />
+        </Property>
+        <Property Name="Title" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Title" />
+          <Annotation Term="Ref.ReferenceName" String="System.Title" />
+        </Property>
+        <Property Name="WorkItemType" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Work Item Type" />
+          <Annotation Term="Ref.ReferenceName" String="System.WorkItemType" />
+        </Property>
+        <Property Name="ChangedDate" Type="Edm.DateTimeOffset">
+          <Annotation Term="Display.DisplayName" String="Changed Date" />
+          <Annotation Term="Ref.ReferenceName" String="System.ChangedDate" />
+        </Property>
+        <Property Name="CreatedDate" Type="Edm.DateTimeOffset">
+          <Annotation Term="Display.DisplayName" String="Created Date" />
+          <Annotation Term="Ref.ReferenceName" String="System.CreatedDate" />
+        </Property>
+        <Property Name="State" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="State" />
+          <Annotation Term="Ref.ReferenceName" String="System.State" />
+        </Property>
+        <Property Name="Reason" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Reason" />
+          <Annotation Term="Ref.ReferenceName" String="System.Reason" />
+        </Property>
+        <Property Name="FoundIn" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Found In" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Build.FoundIn" />
+        </Property>
+        <Property Name="IntegrationBuild" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Integration Build" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Build.IntegrationBuild" />
+        </Property>
+        <Property Name="ActivatedDate" Type="Edm.DateTimeOffset">
+          <Annotation Term="Display.DisplayName" String="Activated Date" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.ActivatedDate" />
+        </Property>
+        <Property Name="Activity" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Activity" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.Activity" />
+        </Property>
+        <Property Name="BacklogPriority" Type="Edm.Double">
+          <Annotation Term="Display.DisplayName" String="Backlog Priority" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.BacklogPriority" />
+        </Property>
+        <Property Name="BusinessValue" Type="Edm.Int32">
+          <Annotation Term="Display.DisplayName" String="Business Value" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.BusinessValue" />
+        </Property>
+        <Property Name="ClosedDate" Type="Edm.DateTimeOffset">
+          <Annotation Term="Display.DisplayName" String="Closed Date" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.ClosedDate" />
+        </Property>
+        <Property Name="Discipline" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Discipline" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.Discipline" />
+        </Property>
+        <Property Name="Issue" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Issue" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.Issue" />
+        </Property>
+        <Property Name="Priority" Type="Edm.Int32">
+          <Annotation Term="Display.DisplayName" String="Priority" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.Priority" />
+        </Property>
+        <Property Name="Rating" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Rating" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.Rating" />
+        </Property>
+        <Property Name="ResolvedDate" Type="Edm.DateTimeOffset">
+          <Annotation Term="Display.DisplayName" String="Resolved Date" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.ResolvedDate" />
+        </Property>
+        <Property Name="ResolvedReason" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Resolved Reason" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.ResolvedReason" />
+        </Property>
+        <Property Name="Risk" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Risk" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.Risk" />
+        </Property>
+        <Property Name="Severity" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Severity" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.Severity" />
+        </Property>
+        <Property Name="StackRank" Type="Edm.Double">
+          <Annotation Term="Display.DisplayName" String="Stack Rank" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.StackRank" />
+        </Property>
+        <Property Name="TimeCriticality" Type="Edm.Double">
+          <Annotation Term="Display.DisplayName" String="Time Criticality" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.TimeCriticality" />
+        </Property>
+        <Property Name="Triage" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Triage" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.Triage" />
+        </Property>
+        <Property Name="ValueArea" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Value Area" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.ValueArea" />
+        </Property>
+        <Property Name="CompletedWork" Type="Edm.Double">
+          <Annotation Term="Display.DisplayName" String="Completed Work" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Scheduling.CompletedWork" />
+        </Property>
+        <Property Name="DueDate" Type="Edm.DateTimeOffset">
+          <Annotation Term="Display.DisplayName" String="Due Date" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Scheduling.DueDate" />
+        </Property>
+        <Property Name="Effort" Type="Edm.Double">
+          <Annotation Term="Display.DisplayName" String="Effort" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Scheduling.Effort" />
+        </Property>
+        <Property Name="FinishDate" Type="Edm.DateTimeOffset">
+          <Annotation Term="Display.DisplayName" String="Finish Date" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Scheduling.FinishDate" />
+        </Property>
+        <Property Name="OriginalEstimate" Type="Edm.Double">
+          <Annotation Term="Display.DisplayName" String="Original Estimate" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Scheduling.OriginalEstimate" />
+        </Property>
+        <Property Name="RemainingWork" Type="Edm.Double">
+          <Annotation Term="Display.DisplayName" String="Remaining Work" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Scheduling.RemainingWork" />
+        </Property>
+        <Property Name="Size" Type="Edm.Double">
+          <Annotation Term="Display.DisplayName" String="Size" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Scheduling.Size" />
+        </Property>
+        <Property Name="StartDate" Type="Edm.DateTimeOffset">
+          <Annotation Term="Display.DisplayName" String="Start Date" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Scheduling.StartDate" />
+        </Property>
+        <Property Name="StoryPoints" Type="Edm.Double">
+          <Annotation Term="Display.DisplayName" String="Story Points" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Scheduling.StoryPoints" />
+        </Property>
+        <Property Name="TargetDate" Type="Edm.DateTimeOffset">
+          <Annotation Term="Display.DisplayName" String="Target Date" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Scheduling.TargetDate" />
+        </Property>
+        <Property Name="Blocked" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Blocked" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.Blocked" />
+        </Property>
+        <Property Name="Committed" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Committed" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.Committed" />
+        </Property>
+        <Property Name="Escalate" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Escalate" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.Escalate" />
+        </Property>
+        <Property Name="FoundInEnvironment" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Found In Environment" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.FoundInEnvironment" />
+        </Property>
+        <Property Name="HowFound" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="How Found" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.HowFound" />
+        </Property>
+        <Property Name="Probability" Type="Edm.Int32">
+          <Annotation Term="Display.DisplayName" String="Probability" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.Probability" />
+        </Property>
+        <Property Name="RequirementType" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Requirement Type" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.RequirementType" />
+        </Property>
+        <Property Name="RequiresReview" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Requires Review" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.RequiresReview" />
+        </Property>
+        <Property Name="RequiresTest" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Requires Test" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.RequiresTest" />
+        </Property>
+        <Property Name="RootCause" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Root Cause" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.RootCause" />
+        </Property>
+        <Property Name="SubjectMatterExpert1" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Subject Matter Expert 1" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.SubjectMatterExpert1" />
+        </Property>
+        <Property Name="SubjectMatterExpert2" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Subject Matter Expert 2" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.SubjectMatterExpert2" />
+        </Property>
+        <Property Name="SubjectMatterExpert3" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Subject Matter Expert 3" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.SubjectMatterExpert3" />
+        </Property>
+        <Property Name="TargetResolveDate" Type="Edm.DateTimeOffset">
+          <Annotation Term="Display.DisplayName" String="Target Resolve Date" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.TargetResolveDate" />
+        </Property>
+        <Property Name="TaskType" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Task Type" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.TaskType" />
+        </Property>
+        <Property Name="UserAcceptanceTest" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="User Acceptance Test" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.UserAcceptanceTest" />
+        </Property>
+        <Property Name="ParentWorkItemId" Type="Edm.Int32">
+          <Annotation Term="Display.DisplayName" String="Parent Work Item Id" />
+        </Property>
+        <Property Name="TagNames" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Tags" />
+          <Annotation Term="Ref.ReferenceName" String="System.Tags" />
+        </Property>
+        <Property Name="StateCategory" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="State Category" />
+        </Property>
+        <Property Name="AutomatedTestId" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Automated Test Id" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.TCM.AutomatedTestId" />
+        </Property>
+        <Property Name="AutomatedTestName" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Automated Test Name" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.TCM.AutomatedTestName" />
+        </Property>
+        <Property Name="AutomatedTestStorage" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Automated Test Storage" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.TCM.AutomatedTestStorage" />
+        </Property>
+        <Property Name="AutomatedTestType" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Automated Test Type" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.TCM.AutomatedTestType" />
+        </Property>
+        <Property Name="AutomationStatus" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Automation Status" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.TCM.AutomationStatus" />
+        </Property>
+        <Property Name="Count" Type="Edm.Int64" Nullable="false" />
+        <NavigationProperty Name="Date" Type="Microsoft.VisualStudio.Services.Analytics.Model.CalendarDate">
+          <ReferentialConstraint Property="DateSK" ReferencedProperty="DateSK" />
+        </NavigationProperty>
+        <NavigationProperty Name="BoardLocation" Type="Microsoft.VisualStudio.Services.Analytics.Model.BoardLocation">
+          <ReferentialConstraint Property="BoardLocationSK" ReferencedProperty="BoardLocationSK" />
+        </NavigationProperty>
+        <NavigationProperty Name="Team" Type="Microsoft.VisualStudio.Services.Analytics.Model.Team">
+          <ReferentialConstraint Property="TeamSK" ReferencedProperty="TeamSK" />
+        </NavigationProperty>
+        <NavigationProperty Name="Project" Type="Microsoft.VisualStudio.Services.Analytics.Model.Project" Nullable="false">
+          <ReferentialConstraint Property="ProjectSK" ReferencedProperty="ProjectSK" />
+        </NavigationProperty>
+        <NavigationProperty Name="Area" Type="Microsoft.VisualStudio.Services.Analytics.Model.Area">
+          <ReferentialConstraint Property="AreaSK" ReferencedProperty="AreaSK" />
+        </NavigationProperty>
+        <NavigationProperty Name="Iteration" Type="Microsoft.VisualStudio.Services.Analytics.Model.Iteration">
+          <ReferentialConstraint Property="IterationSK" ReferencedProperty="IterationSK" />
+        </NavigationProperty>
+        <NavigationProperty Name="AssignedTo" Type="Microsoft.VisualStudio.Services.Analytics.Model.User">
+          <ReferentialConstraint Property="AssignedToUserSK" ReferencedProperty="UserSK" />
+        </NavigationProperty>
+        <NavigationProperty Name="ChangedBy" Type="Microsoft.VisualStudio.Services.Analytics.Model.User">
+          <ReferentialConstraint Property="ChangedByUserSK" ReferencedProperty="UserSK" />
+        </NavigationProperty>
+        <NavigationProperty Name="CreatedBy" Type="Microsoft.VisualStudio.Services.Analytics.Model.User">
+          <ReferentialConstraint Property="CreatedByUserSK" ReferencedProperty="UserSK" />
+        </NavigationProperty>
+        <NavigationProperty Name="ActivatedBy" Type="Microsoft.VisualStudio.Services.Analytics.Model.User">
+          <ReferentialConstraint Property="ActivatedByUserSK" ReferencedProperty="UserSK" />
+        </NavigationProperty>
+        <NavigationProperty Name="ClosedBy" Type="Microsoft.VisualStudio.Services.Analytics.Model.User">
+          <ReferentialConstraint Property="ClosedByUserSK" ReferencedProperty="UserSK" />
+        </NavigationProperty>
+        <NavigationProperty Name="ResolvedBy" Type="Microsoft.VisualStudio.Services.Analytics.Model.User">
+          <ReferentialConstraint Property="ResolvedByUserSK" ReferencedProperty="UserSK" />
+        </NavigationProperty>
+        <NavigationProperty Name="Tags" Type="Collection(Microsoft.VisualStudio.Services.Analytics.Model.Tag)" />
+      </EntityType>
+      <EntityType Name="WorkItemView">
+        <Key>
+          <PropertyRef Name="WorkItemId" />
+        </Key>
+        <Property Name="WorkItemId" Type="Edm.Int32" Nullable="false">
+          <Annotation Term="Display.DisplayName" String="Work Item Id" />
+          <Annotation Term="Ref.ReferenceName" String="System.Id" />
+        </Property>
+        <Property Name="ProjectName" Type="Edm.String" Nullable="false">
+          <Annotation Term="Display.DisplayName" String="Project Name" />
+          <Annotation Term="Ref.ReferenceName" String="System.TeamProject" />
+        </Property>
+        <Property Name="AreaPath" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Area Path" />
+          <Annotation Term="Ref.ReferenceName" String="System.AreaPath" />
+        </Property>
+        <Property Name="IterationPath" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Iteration Path" />
+          <Annotation Term="Ref.ReferenceName" String="System.IterationPath" />
+        </Property>
+        <Property Name="AssignedToUserName" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Assigned To User Name" />
+        </Property>
+        <Property Name="ChangedByUserName" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Changed By User Name" />
+        </Property>
+        <Property Name="CreatedByUserName" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Created By User Name" />
+        </Property>
+        <Property Name="ActivatedByUserName" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Activated By User Name" />
+        </Property>
+        <Property Name="ClosedByUserName" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="ClosedB By User Name" />
+        </Property>
+        <Property Name="ResolvedByUserName" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Resolved By User Name" />
+        </Property>
+        <Property Name="Count" Type="Edm.Int64">
+          <Annotation Term="Display.DisplayName" String="Work Item Count" />
+        </Property>
+        <Property Name="ProjectSK" Type="Edm.Guid" />
+        <Property Name="Revision" Type="Edm.Int32" Nullable="false">
+          <Annotation Term="Display.DisplayName" String="Revision" />
+          <Annotation Term="Ref.ReferenceName" String="System.Rev" />
+        </Property>
+        <Property Name="Watermark" Type="Edm.Int32">
+          <Annotation Term="Display.DisplayName" String="Watermark" />
+          <Annotation Term="Ref.ReferenceName" String="System.Watermark" />
+        </Property>
+        <Property Name="Title" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Title" />
+          <Annotation Term="Ref.ReferenceName" String="System.Title" />
+        </Property>
+        <Property Name="WorkItemType" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Work Item Type" />
+          <Annotation Term="Ref.ReferenceName" String="System.WorkItemType" />
+        </Property>
+        <Property Name="ChangedDate" Type="Edm.DateTimeOffset">
+          <Annotation Term="Display.DisplayName" String="Changed Date" />
+          <Annotation Term="Ref.ReferenceName" String="System.ChangedDate" />
+        </Property>
+        <Property Name="CreatedDate" Type="Edm.DateTimeOffset">
+          <Annotation Term="Display.DisplayName" String="Created Date" />
+          <Annotation Term="Ref.ReferenceName" String="System.CreatedDate" />
+        </Property>
+        <Property Name="State" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="State" />
+          <Annotation Term="Ref.ReferenceName" String="System.State" />
+        </Property>
+        <Property Name="Reason" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Reason" />
+          <Annotation Term="Ref.ReferenceName" String="System.Reason" />
+        </Property>
+        <Property Name="FoundIn" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Found In" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Build.FoundIn" />
+        </Property>
+        <Property Name="IntegrationBuild" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Integration Build" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Build.IntegrationBuild" />
+        </Property>
+        <Property Name="Activity" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Activity" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.Activity" />
+        </Property>
+        <Property Name="BacklogPriority" Type="Edm.Double">
+          <Annotation Term="Display.DisplayName" String="Backlog Priority" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.BacklogPriority" />
+        </Property>
+        <Property Name="BusinessValue" Type="Edm.Int32">
+          <Annotation Term="Display.DisplayName" String="Business Value" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.BusinessValue" />
+        </Property>
+        <Property Name="Discipline" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Discipline" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.Discipline" />
+        </Property>
+        <Property Name="Issue" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Issue" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.Issue" />
+        </Property>
+        <Property Name="Priority" Type="Edm.Int32">
+          <Annotation Term="Display.DisplayName" String="Priority" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.Priority" />
+        </Property>
+        <Property Name="Rating" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Rating" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.Rating" />
+        </Property>
+        <Property Name="ResolvedReason" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Resolved Reason" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.ResolvedReason" />
+        </Property>
+        <Property Name="Risk" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Risk" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.Risk" />
+        </Property>
+        <Property Name="Severity" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Severity" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.Severity" />
+        </Property>
+        <Property Name="StackRank" Type="Edm.Double">
+          <Annotation Term="Display.DisplayName" String="Stack Rank" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.StackRank" />
+        </Property>
+        <Property Name="TimeCriticality" Type="Edm.Double">
+          <Annotation Term="Display.DisplayName" String="Time Criticality" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.TimeCriticality" />
+        </Property>
+        <Property Name="Triage" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Triage" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.Triage" />
+        </Property>
+        <Property Name="ValueArea" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Value Area" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.ValueArea" />
+        </Property>
+        <Property Name="CompletedWork" Type="Edm.Double">
+          <Annotation Term="Display.DisplayName" String="Completed Work" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Scheduling.CompletedWork" />
+        </Property>
+        <Property Name="DueDate" Type="Edm.DateTimeOffset">
+          <Annotation Term="Display.DisplayName" String="Due Date" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Scheduling.DueDate" />
+        </Property>
+        <Property Name="Effort" Type="Edm.Double">
+          <Annotation Term="Display.DisplayName" String="Effort" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Scheduling.Effort" />
+        </Property>
+        <Property Name="FinishDate" Type="Edm.DateTimeOffset">
+          <Annotation Term="Display.DisplayName" String="Finish Date" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Scheduling.FinishDate" />
+        </Property>
+        <Property Name="OriginalEstimate" Type="Edm.Double">
+          <Annotation Term="Display.DisplayName" String="Original Estimate" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Scheduling.OriginalEstimate" />
+        </Property>
+        <Property Name="RemainingWork" Type="Edm.Double">
+          <Annotation Term="Display.DisplayName" String="Remaining Work" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Scheduling.RemainingWork" />
+        </Property>
+        <Property Name="Size" Type="Edm.Double">
+          <Annotation Term="Display.DisplayName" String="Size" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Scheduling.Size" />
+        </Property>
+        <Property Name="StartDate" Type="Edm.DateTimeOffset">
+          <Annotation Term="Display.DisplayName" String="Start Date" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Scheduling.StartDate" />
+        </Property>
+        <Property Name="StoryPoints" Type="Edm.Double">
+          <Annotation Term="Display.DisplayName" String="Story Points" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Scheduling.StoryPoints" />
+        </Property>
+        <Property Name="TargetDate" Type="Edm.DateTimeOffset">
+          <Annotation Term="Display.DisplayName" String="Target Date" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Scheduling.TargetDate" />
+        </Property>
+        <Property Name="Blocked" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Blocked" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.Blocked" />
+        </Property>
+        <Property Name="Committed" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Committed" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.Committed" />
+        </Property>
+        <Property Name="Escalate" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Escalate" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.Escalate" />
+        </Property>
+        <Property Name="FoundInEnvironment" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Found In Environment" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.FoundInEnvironment" />
+        </Property>
+        <Property Name="HowFound" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="How Found" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.HowFound" />
+        </Property>
+        <Property Name="Probability" Type="Edm.Int32">
+          <Annotation Term="Display.DisplayName" String="Probability" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.Probability" />
+        </Property>
+        <Property Name="RequirementType" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Requirement Type" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.RequirementType" />
+        </Property>
+        <Property Name="RequiresReview" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Requires Review" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.RequiresReview" />
+        </Property>
+        <Property Name="RequiresTest" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Requires Test" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.RequiresTest" />
+        </Property>
+        <Property Name="RootCause" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Root Cause" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.RootCause" />
+        </Property>
+        <Property Name="SubjectMatterExpert1" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Subject Matter Expert 1" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.SubjectMatterExpert1" />
+        </Property>
+        <Property Name="SubjectMatterExpert2" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Subject Matter Expert 2" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.SubjectMatterExpert2" />
+        </Property>
+        <Property Name="SubjectMatterExpert3" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Subject Matter Expert 3" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.SubjectMatterExpert3" />
+        </Property>
+        <Property Name="TargetResolveDate" Type="Edm.DateTimeOffset">
+          <Annotation Term="Display.DisplayName" String="Target Resolve Date" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.TargetResolveDate" />
+        </Property>
+        <Property Name="TaskType" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Task Type" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.TaskType" />
+        </Property>
+        <Property Name="UserAcceptanceTest" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="User Acceptance Test" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.UserAcceptanceTest" />
+        </Property>
+        <Property Name="ParentWorkItemId" Type="Edm.Int32">
+          <Annotation Term="Display.DisplayName" String="Parent Work Item Id" />
+        </Property>
+        <Property Name="TagNames" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Tags" />
+          <Annotation Term="Ref.ReferenceName" String="System.Tags" />
+        </Property>
+        <Property Name="StateCategory" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="State Category" />
+        </Property>
+        <Property Name="AutomatedTestId" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Automated Test Id" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.TCM.AutomatedTestId" />
+        </Property>
+        <Property Name="AutomatedTestName" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Automated Test Name" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.TCM.AutomatedTestName" />
+        </Property>
+        <Property Name="AutomatedTestStorage" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Automated Test Storage" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.TCM.AutomatedTestStorage" />
+        </Property>
+        <Property Name="AutomatedTestType" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Automated Test Type" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.TCM.AutomatedTestType" />
+        </Property>
+        <Property Name="AutomationStatus" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Automation Status" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.TCM.AutomationStatus" />
+        </Property>
+      </EntityType>
+      <EntityType Name="WorkItemDailySnapshotLast30DaysView">
+        <Key>
+          <PropertyRef Name="WorkItemId" />
+          <PropertyRef Name="Date" />
+        </Key>
+        <Property Name="WorkItemId" Type="Edm.Int32" Nullable="false">
+          <Annotation Term="Display.DisplayName" String="Work Item Id" />
+          <Annotation Term="Ref.ReferenceName" String="System.Id" />
+        </Property>
+        <Property Name="Date" Type="Edm.DateTimeOffset" Nullable="false">
+          <Annotation Term="Display.DisplayName" String="Date" />
+        </Property>
+        <Property Name="RevisedDate" Type="Edm.DateTimeOffset">
+          <Annotation Term="Display.DisplayName" String="Revised Date" />
+          <Annotation Term="Ref.ReferenceName" String="System.RevisedDate" />
+        </Property>
+        <Property Name="IsCurrent" Type="Edm.Boolean">
+          <Annotation Term="Display.DisplayName" String="Is Current" />
+        </Property>
+        <Property Name="ProjectName" Type="Edm.String" Nullable="false">
+          <Annotation Term="Display.DisplayName" String="Project Name" />
+          <Annotation Term="Ref.ReferenceName" String="System.TeamProject" />
+        </Property>
+        <Property Name="AreaPath" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Area Path" />
+          <Annotation Term="Ref.ReferenceName" String="System.AreaPath" />
+        </Property>
+        <Property Name="IterationPath" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Iteration Path" />
+          <Annotation Term="Ref.ReferenceName" String="System.IterationPath" />
+        </Property>
+        <Property Name="AssignedToUserName" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Assigned To User Name" />
+        </Property>
+        <Property Name="ChangedByUserName" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Changed By User Name" />
+        </Property>
+        <Property Name="CreatedByUserName" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Created By User Name" />
+        </Property>
+        <Property Name="ActivatedByUserName" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Activated By User Name" />
+        </Property>
+        <Property Name="ClosedByUserName" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="ClosedB By User Name" />
+        </Property>
+        <Property Name="ResolvedByUserName" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Resolved By User Name" />
+        </Property>
+        <Property Name="Count" Type="Edm.Int64">
+          <Annotation Term="Display.DisplayName" String="Work Item Count" />
+        </Property>
+        <Property Name="ProjectSK" Type="Edm.Guid" />
+        <Property Name="Revision" Type="Edm.Int32" Nullable="false">
+          <Annotation Term="Display.DisplayName" String="Revision" />
+          <Annotation Term="Ref.ReferenceName" String="System.Rev" />
+        </Property>
+        <Property Name="Watermark" Type="Edm.Int32">
+          <Annotation Term="Display.DisplayName" String="Watermark" />
+          <Annotation Term="Ref.ReferenceName" String="System.Watermark" />
+        </Property>
+        <Property Name="Title" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Title" />
+          <Annotation Term="Ref.ReferenceName" String="System.Title" />
+        </Property>
+        <Property Name="WorkItemType" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Work Item Type" />
+          <Annotation Term="Ref.ReferenceName" String="System.WorkItemType" />
+        </Property>
+        <Property Name="ChangedDate" Type="Edm.DateTimeOffset">
+          <Annotation Term="Display.DisplayName" String="Changed Date" />
+          <Annotation Term="Ref.ReferenceName" String="System.ChangedDate" />
+        </Property>
+        <Property Name="CreatedDate" Type="Edm.DateTimeOffset">
+          <Annotation Term="Display.DisplayName" String="Created Date" />
+          <Annotation Term="Ref.ReferenceName" String="System.CreatedDate" />
+        </Property>
+        <Property Name="State" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="State" />
+          <Annotation Term="Ref.ReferenceName" String="System.State" />
+        </Property>
+        <Property Name="Reason" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Reason" />
+          <Annotation Term="Ref.ReferenceName" String="System.Reason" />
+        </Property>
+        <Property Name="FoundIn" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Found In" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Build.FoundIn" />
+        </Property>
+        <Property Name="IntegrationBuild" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Integration Build" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Build.IntegrationBuild" />
+        </Property>
+        <Property Name="Activity" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Activity" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.Activity" />
+        </Property>
+        <Property Name="BacklogPriority" Type="Edm.Double">
+          <Annotation Term="Display.DisplayName" String="Backlog Priority" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.BacklogPriority" />
+        </Property>
+        <Property Name="BusinessValue" Type="Edm.Int32">
+          <Annotation Term="Display.DisplayName" String="Business Value" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.BusinessValue" />
+        </Property>
+        <Property Name="Discipline" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Discipline" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.Discipline" />
+        </Property>
+        <Property Name="Issue" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Issue" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.Issue" />
+        </Property>
+        <Property Name="Priority" Type="Edm.Int32">
+          <Annotation Term="Display.DisplayName" String="Priority" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.Priority" />
+        </Property>
+        <Property Name="Rating" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Rating" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.Rating" />
+        </Property>
+        <Property Name="ResolvedReason" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Resolved Reason" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.ResolvedReason" />
+        </Property>
+        <Property Name="Risk" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Risk" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.Risk" />
+        </Property>
+        <Property Name="Severity" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Severity" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.Severity" />
+        </Property>
+        <Property Name="StackRank" Type="Edm.Double">
+          <Annotation Term="Display.DisplayName" String="Stack Rank" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.StackRank" />
+        </Property>
+        <Property Name="TimeCriticality" Type="Edm.Double">
+          <Annotation Term="Display.DisplayName" String="Time Criticality" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.TimeCriticality" />
+        </Property>
+        <Property Name="Triage" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Triage" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.Triage" />
+        </Property>
+        <Property Name="ValueArea" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Value Area" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Common.ValueArea" />
+        </Property>
+        <Property Name="CompletedWork" Type="Edm.Double">
+          <Annotation Term="Display.DisplayName" String="Completed Work" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Scheduling.CompletedWork" />
+        </Property>
+        <Property Name="DueDate" Type="Edm.DateTimeOffset">
+          <Annotation Term="Display.DisplayName" String="Due Date" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Scheduling.DueDate" />
+        </Property>
+        <Property Name="Effort" Type="Edm.Double">
+          <Annotation Term="Display.DisplayName" String="Effort" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Scheduling.Effort" />
+        </Property>
+        <Property Name="FinishDate" Type="Edm.DateTimeOffset">
+          <Annotation Term="Display.DisplayName" String="Finish Date" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Scheduling.FinishDate" />
+        </Property>
+        <Property Name="OriginalEstimate" Type="Edm.Double">
+          <Annotation Term="Display.DisplayName" String="Original Estimate" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Scheduling.OriginalEstimate" />
+        </Property>
+        <Property Name="RemainingWork" Type="Edm.Double">
+          <Annotation Term="Display.DisplayName" String="Remaining Work" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Scheduling.RemainingWork" />
+        </Property>
+        <Property Name="Size" Type="Edm.Double">
+          <Annotation Term="Display.DisplayName" String="Size" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Scheduling.Size" />
+        </Property>
+        <Property Name="StartDate" Type="Edm.DateTimeOffset">
+          <Annotation Term="Display.DisplayName" String="Start Date" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Scheduling.StartDate" />
+        </Property>
+        <Property Name="StoryPoints" Type="Edm.Double">
+          <Annotation Term="Display.DisplayName" String="Story Points" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Scheduling.StoryPoints" />
+        </Property>
+        <Property Name="TargetDate" Type="Edm.DateTimeOffset">
+          <Annotation Term="Display.DisplayName" String="Target Date" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.Scheduling.TargetDate" />
+        </Property>
+        <Property Name="Blocked" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Blocked" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.Blocked" />
+        </Property>
+        <Property Name="Committed" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Committed" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.Committed" />
+        </Property>
+        <Property Name="Escalate" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Escalate" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.Escalate" />
+        </Property>
+        <Property Name="FoundInEnvironment" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Found In Environment" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.FoundInEnvironment" />
+        </Property>
+        <Property Name="HowFound" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="How Found" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.HowFound" />
+        </Property>
+        <Property Name="Probability" Type="Edm.Int32">
+          <Annotation Term="Display.DisplayName" String="Probability" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.Probability" />
+        </Property>
+        <Property Name="RequirementType" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Requirement Type" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.RequirementType" />
+        </Property>
+        <Property Name="RequiresReview" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Requires Review" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.RequiresReview" />
+        </Property>
+        <Property Name="RequiresTest" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Requires Test" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.RequiresTest" />
+        </Property>
+        <Property Name="RootCause" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Root Cause" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.RootCause" />
+        </Property>
+        <Property Name="SubjectMatterExpert1" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Subject Matter Expert 1" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.SubjectMatterExpert1" />
+        </Property>
+        <Property Name="SubjectMatterExpert2" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Subject Matter Expert 2" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.SubjectMatterExpert2" />
+        </Property>
+        <Property Name="SubjectMatterExpert3" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Subject Matter Expert 3" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.SubjectMatterExpert3" />
+        </Property>
+        <Property Name="TargetResolveDate" Type="Edm.DateTimeOffset">
+          <Annotation Term="Display.DisplayName" String="Target Resolve Date" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.TargetResolveDate" />
+        </Property>
+        <Property Name="TaskType" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Task Type" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.TaskType" />
+        </Property>
+        <Property Name="UserAcceptanceTest" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="User Acceptance Test" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.CMMI.UserAcceptanceTest" />
+        </Property>
+        <Property Name="ParentWorkItemId" Type="Edm.Int32">
+          <Annotation Term="Display.DisplayName" String="Parent Work Item Id" />
+        </Property>
+        <Property Name="TagNames" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Tags" />
+          <Annotation Term="Ref.ReferenceName" String="System.Tags" />
+        </Property>
+        <Property Name="StateCategory" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="State Category" />
+        </Property>
+        <Property Name="AutomatedTestId" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Automated Test Id" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.TCM.AutomatedTestId" />
+        </Property>
+        <Property Name="AutomatedTestName" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Automated Test Name" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.TCM.AutomatedTestName" />
+        </Property>
+        <Property Name="AutomatedTestStorage" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Automated Test Storage" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.TCM.AutomatedTestStorage" />
+        </Property>
+        <Property Name="AutomatedTestType" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Automated Test Type" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.TCM.AutomatedTestType" />
+        </Property>
+        <Property Name="AutomationStatus" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Automation Status" />
+          <Annotation Term="Ref.ReferenceName" String="Microsoft.VSTS.TCM.AutomationStatus" />
+        </Property>
+      </EntityType>
+      <EntityType Name="WorkItemLink">
+        <Key>
+          <PropertyRef Name="SourceWorkItemId" />
+          <PropertyRef Name="TargetWorkItemId" />
+          <PropertyRef Name="CreatedDate" />
+          <PropertyRef Name="LinkTypeId" />
+        </Key>
+        <Property Name="WorkItemLinkSK" Type="Edm.Int32" Nullable="false" />
+        <Property Name="SourceWorkItemId" Type="Edm.Int32">
+          <Annotation Term="Display.DisplayName" String="Source Work Item Id" />
+        </Property>
+        <Property Name="TargetWorkItemId" Type="Edm.Int32">
+          <Annotation Term="Display.DisplayName" String="Target Work Item Id" />
+        </Property>
+        <Property Name="CreatedDate" Type="Edm.DateTimeOffset" Nullable="false">
+          <Annotation Term="Display.DisplayName" String="Created Date" />
+        </Property>
+        <Property Name="DeletedDate" Type="Edm.DateTimeOffset">
+          <Annotation Term="Display.DisplayName" String="Deleted Date" />
+        </Property>
+        <Property Name="Comment" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Comment" />
+        </Property>
+        <Property Name="LinkTypeId" Type="Edm.Int32" Nullable="false">
+          <Annotation Term="Display.DisplayName" String="Link Type Id" />
+        </Property>
+        <Property Name="LinkTypeReferenceName" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Link Type Reference Name" />
+        </Property>
+        <Property Name="LinkTypeName" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Link Type Name" />
+        </Property>
+        <Property Name="LinkTypeIsAcyclic" Type="Edm.Boolean">
+          <Annotation Term="Display.DisplayName" String="Link Type Is Acyclic" />
+        </Property>
+        <Property Name="LinkTypeIsDirectional" Type="Edm.Boolean">
+          <Annotation Term="Display.DisplayName" String="Link Type Is Directional" />
+        </Property>
+        <Property Name="AnalyticsUpdatedDate" Type="Edm.DateTimeOffset" />
+        <NavigationProperty Name="SourceWorkItem" Type="Microsoft.VisualStudio.Services.Analytics.Model.WorkItem">
+          <ReferentialConstraint Property="SourceWorkItemId" ReferencedProperty="WorkItemId" />
+        </NavigationProperty>
+        <NavigationProperty Name="TargetWorkItem" Type="Microsoft.VisualStudio.Services.Analytics.Model.WorkItem">
+          <ReferentialConstraint Property="TargetWorkItemId" ReferencedProperty="WorkItemId" />
+        </NavigationProperty>
+      </EntityType>
+      <EntityType Name="CalendarDate">
+        <Key>
+          <PropertyRef Name="DateSK" />
+        </Key>
+        <Property Name="Date" Type="Edm.DateTimeOffset" Nullable="false">
+          <Annotation Term="Display.DisplayName" String="Date" />
+        </Property>
+        <Property Name="DateSK" Type="Edm.Int32" Nullable="false" />
+        <Property Name="Year" Type="Edm.Int32" Nullable="false">
+          <Annotation Term="Display.DisplayName" String="Year" />
+        </Property>
+        <Property Name="MonthOfYear" Type="Edm.Int32" Nullable="false">
+          <Annotation Term="Display.DisplayName" String="Month Of Year" />
+        </Property>
+        <Property Name="DayOfYear" Type="Edm.Int32" Nullable="false">
+          <Annotation Term="Display.DisplayName" String="Day Of Year" />
+        </Property>
+        <Property Name="MonthName" Type="Edm.String" Nullable="false">
+          <Annotation Term="Display.DisplayName" String="Month Name" />
+        </Property>
+        <Property Name="MonthShortName" Type="Edm.String" Nullable="false">
+          <Annotation Term="Display.DisplayName" String="Month Short Name" />
+        </Property>
+        <Property Name="Month" Type="Edm.String" Nullable="false">
+          <Annotation Term="Display.DisplayName" String="Month" />
+        </Property>
+        <Property Name="DayOfWeek" Type="Edm.Int32" Nullable="false">
+          <Annotation Term="Display.DisplayName" String="Day Of Week" />
+        </Property>
+        <Property Name="DayName" Type="Edm.String" Nullable="false">
+          <Annotation Term="Display.DisplayName" String="Day Name" />
+        </Property>
+        <Property Name="DayShortName" Type="Edm.String" Nullable="false">
+          <Annotation Term="Display.DisplayName" String="Day Short Name" />
+        </Property>
+        <Property Name="WeekStartingDate" Type="Edm.DateTimeOffset" Nullable="false">
+          <Annotation Term="Display.DisplayName" String="Week Starting Date" />
+        </Property>
+        <Property Name="WeekEndingDate" Type="Edm.DateTimeOffset" Nullable="false">
+          <Annotation Term="Display.DisplayName" String="Week Ending Date" />
+        </Property>
+        <Property Name="YearMonth" Type="Edm.Int32" Nullable="false">
+          <Annotation Term="Display.DisplayName" String="Year Month" />
+        </Property>
+      </EntityType>
+      <EntityType Name="Project">
+        <Key>
+          <PropertyRef Name="ProjectSK" />
+        </Key>
+        <Property Name="ProjectSK" Type="Edm.Guid" Nullable="false" />
+        <Property Name="ProjectId" Type="Edm.Guid" Nullable="false">
+          <Annotation Term="Display.DisplayName" String="Project Id" />
+        </Property>
+        <Property Name="ProjectName" Type="Edm.String" Nullable="false">
+          <Annotation Term="Display.DisplayName" String="Project Name" />
+        </Property>
+        <NavigationProperty Name="Areas" Type="Collection(Microsoft.VisualStudio.Services.Analytics.Model.Area)" />
+        <NavigationProperty Name="Iterations" Type="Collection(Microsoft.VisualStudio.Services.Analytics.Model.Iteration)" />
+        <NavigationProperty Name="Teams" Type="Collection(Microsoft.VisualStudio.Services.Analytics.Model.Team)" />
+      </EntityType>
+      <EntityType Name="Iteration">
+        <Key>
+          <PropertyRef Name="IterationSK" />
+        </Key>
+        <Property Name="ProjectSK" Type="Edm.Guid" />
+        <Property Name="IterationSK" Type="Edm.Guid" Nullable="false" />
+        <Property Name="IterationId" Type="Edm.Guid" Nullable="false">
+          <Annotation Term="Display.DisplayName" String="Iteration Id" />
+        </Property>
+        <Property Name="IterationName" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Iteration Name" />
+        </Property>
+        <Property Name="Number" Type="Edm.Int32" />
+        <Property Name="IterationPath" Type="Edm.String" Nullable="false">
+          <Annotation Term="Display.DisplayName" String="Iteration Path" />
+        </Property>
+        <Property Name="StartDate" Type="Edm.DateTimeOffset">
+          <Annotation Term="Display.DisplayName" String="Start Date" />
+        </Property>
+        <Property Name="EndDate" Type="Edm.DateTimeOffset">
+          <Annotation Term="Display.DisplayName" String="End Date" />
+        </Property>
+        <Property Name="IterationLevel0" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Iteration Level 0" />
+        </Property>
+        <Property Name="IterationLevel1" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Iteration Level 1" />
+        </Property>
+        <Property Name="IterationLevel2" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Iteration Level 2" />
+        </Property>
+        <Property Name="IterationLevel3" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Iteration Level 3" />
+        </Property>
+        <Property Name="IterationLevel4" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Iteration Level 4" />
+        </Property>
+        <Property Name="IterationLevel5" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Iteration Level 5" />
+        </Property>
+        <Property Name="IterationLevel6" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Iteration Level 6" />
+        </Property>
+        <Property Name="IterationLevel7" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Iteration Level 7" />
+        </Property>
+        <Property Name="IterationLevel8" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Iteration Level 8" />
+        </Property>
+        <Property Name="IterationLevel9" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Iteration Level 9" />
+        </Property>
+        <Property Name="IterationLevel10" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Iteration Level 10" />
+        </Property>
+        <Property Name="IterationLevel11" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Iteration Level 11" />
+        </Property>
+        <Property Name="IterationLevel12" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Iteration Level 12" />
+        </Property>
+        <Property Name="IterationLevel13" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Iteration Level 13" />
+        </Property>
+        <Property Name="Level" Type="Edm.Int32">
+          <Annotation Term="Display.DisplayName" String="Level" />
+        </Property>
+        <NavigationProperty Name="Project" Type="Microsoft.VisualStudio.Services.Analytics.Model.Project">
+          <ReferentialConstraint Property="ProjectSK" ReferencedProperty="ProjectSK" />
+        </NavigationProperty>
+        <NavigationProperty Name="Teams" Type="Collection(Microsoft.VisualStudio.Services.Analytics.Model.Team)" />
+      </EntityType>
+      <EntityType Name="Area">
+        <Key>
+          <PropertyRef Name="AreaSK" />
+        </Key>
+        <Property Name="ProjectSK" Type="Edm.Guid" />
+        <Property Name="AreaSK" Type="Edm.Guid" Nullable="false" />
+        <Property Name="AreaId" Type="Edm.Guid" Nullable="false">
+          <Annotation Term="Display.DisplayName" String="Area Id" />
+        </Property>
+        <Property Name="AreaName" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Area Name" />
+        </Property>
+        <Property Name="Number" Type="Edm.Int32" />
+        <Property Name="AreaPath" Type="Edm.String" Nullable="false">
+          <Annotation Term="Display.DisplayName" String="Area Path" />
+        </Property>
+        <Property Name="AreaLevel0" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Area Level 0" />
+        </Property>
+        <Property Name="AreaLevel1" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Area Level 1" />
+        </Property>
+        <Property Name="AreaLevel2" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Area Level 2" />
+        </Property>
+        <Property Name="AreaLevel3" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Area Level 3" />
+        </Property>
+        <Property Name="AreaLevel4" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Area Level 4" />
+        </Property>
+        <Property Name="AreaLevel5" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Area Level 5" />
+        </Property>
+        <Property Name="AreaLevel6" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Area Level 6" />
+        </Property>
+        <Property Name="AreaLevel7" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Area Level 7" />
+        </Property>
+        <Property Name="AreaLevel8" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Area Level 8" />
+        </Property>
+        <Property Name="AreaLevel9" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Area Level 9" />
+        </Property>
+        <Property Name="AreaLevel10" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Area Level 10" />
+        </Property>
+        <Property Name="AreaLevel11" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Area Level 11" />
+        </Property>
+        <Property Name="AreaLevel12" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Area Level 12" />
+        </Property>
+        <Property Name="AreaLevel13" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Area Level 13" />
+        </Property>
+        <Property Name="Level" Type="Edm.Int32">
+          <Annotation Term="Display.DisplayName" String="Level" />
+        </Property>
+        <NavigationProperty Name="Project" Type="Microsoft.VisualStudio.Services.Analytics.Model.Project">
+          <ReferentialConstraint Property="ProjectSK" ReferencedProperty="ProjectSK" />
+        </NavigationProperty>
+        <NavigationProperty Name="Teams" Type="Collection(Microsoft.VisualStudio.Services.Analytics.Model.Team)" />
+      </EntityType>
+      <EntityType Name="Tag">
+        <Key>
+          <PropertyRef Name="TagSK" />
+        </Key>
+        <Property Name="TagSK" Type="Edm.Int32" Nullable="false" />
+        <Property Name="ProjectSK" Type="Edm.Guid" />
+        <Property Name="TagId" Type="Edm.Guid">
+          <Annotation Term="Display.DisplayName" String="Tag Id" />
+        </Property>
+        <Property Name="TagName" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Tag Name" />
+        </Property>
+        <NavigationProperty Name="Project" Type="Microsoft.VisualStudio.Services.Analytics.Model.Project">
+          <ReferentialConstraint Property="ProjectSK" ReferencedProperty="ProjectSK" />
+        </NavigationProperty>
+      </EntityType>
+      <EntityType Name="Team">
+        <Key>
+          <PropertyRef Name="TeamSK" />
+        </Key>
+        <Property Name="TeamSK" Type="Edm.Guid" Nullable="false" />
+        <Property Name="ProjectSK" Type="Edm.Guid" />
+        <Property Name="TeamId" Type="Edm.Guid" Nullable="false">
+          <Annotation Term="Display.DisplayName" String="Team Id" />
+        </Property>
+        <Property Name="TeamName" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Team Name" />
+        </Property>
+        <NavigationProperty Name="Project" Type="Microsoft.VisualStudio.Services.Analytics.Model.Project">
+          <ReferentialConstraint Property="ProjectSK" ReferencedProperty="ProjectSK" />
+        </NavigationProperty>
+        <NavigationProperty Name="Areas" Type="Collection(Microsoft.VisualStudio.Services.Analytics.Model.Area)" />
+        <NavigationProperty Name="Iterations" Type="Collection(Microsoft.VisualStudio.Services.Analytics.Model.Iteration)" />
+      </EntityType>
+      <EntityType Name="BoardLocation">
+        <Key>
+          <PropertyRef Name="BoardLocationSK" />
+        </Key>
+        <Property Name="ProjectSK" Type="Edm.Guid" />
+        <Property Name="BoardLocationSK" Type="Edm.Int32" Nullable="false" />
+        <Property Name="ColumnId" Type="Edm.Guid" Nullable="false">
+          <Annotation Term="Display.DisplayName" String="Column Id" />
+        </Property>
+        <Property Name="ColumnName" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Column Name" />
+        </Property>
+        <Property Name="ColumnOrder" Type="Edm.Int32">
+          <Annotation Term="Display.DisplayName" String="Column Order" />
+        </Property>
+        <Property Name="ColumnItemLimit" Type="Edm.Int32">
+          <Annotation Term="Display.DisplayName" String="Column Item Limit" />
+        </Property>
+        <Property Name="IsDone" Type="Edm.Boolean">
+          <Annotation Term="Display.DisplayName" String="Is Done" />
+        </Property>
+        <Property Name="BoardId" Type="Edm.Guid" Nullable="false">
+          <Annotation Term="Display.DisplayName" String="Board Id" />
+        </Property>
+        <Property Name="BoardCategoryReferenceName" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Board Category Reference Name" />
+        </Property>
+        <Property Name="BoardName" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Board Name" />
+        </Property>
+        <Property Name="BoardLevel" Type="Edm.Int32">
+          <Annotation Term="Display.DisplayName" String="Board Level" />
+        </Property>
+        <Property Name="IsBoardVisible" Type="Edm.Boolean" Nullable="false">
+          <Annotation Term="Display.DisplayName" String="Is Board Visible" />
+        </Property>
+        <Property Name="LaneId" Type="Edm.Guid" Nullable="false">
+          <Annotation Term="Display.DisplayName" String="Lane Id" />
+        </Property>
+        <Property Name="LaneName" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Lane Name" />
+        </Property>
+        <Property Name="LaneOrder" Type="Edm.Int32">
+          <Annotation Term="Display.DisplayName" String="Lane Order" />
+        </Property>
+        <Property Name="IsColumnSplit" Type="Edm.Boolean">
+          <Annotation Term="Display.DisplayName" String="Is Column Split" />
+        </Property>
+        <Property Name="ChangedDate" Type="Edm.DateTimeOffset">
+          <Annotation Term="Display.DisplayName" String="Changed Date" />
+        </Property>
+        <Property Name="RevisedDate" Type="Edm.DateTimeOffset">
+          <Annotation Term="Display.DisplayName" String="Revised Date" />
+        </Property>
+        <Property Name="IsCurrent" Type="Edm.Boolean">
+          <Annotation Term="Display.DisplayName" String="Is Current" />
+        </Property>
+        <Property Name="Done" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="Done" />
+        </Property>
+        <Property Name="TeamSK" Type="Edm.Guid" />
+        <Property Name="IsDefaultLane" Type="Edm.Boolean" Nullable="false">
+          <Annotation Term="Display.DisplayName" String="Is Default Lane" />
+        </Property>
+        <NavigationProperty Name="Team" Type="Microsoft.VisualStudio.Services.Analytics.Model.Team">
+          <ReferentialConstraint Property="TeamSK" ReferencedProperty="TeamSK" />
+        </NavigationProperty>
+      </EntityType>
+      <EntityType Name="User">
+        <Key>
+          <PropertyRef Name="UserSK" />
+        </Key>
+        <Property Name="UserSK" Type="Edm.Guid" Nullable="false" />
+        <Property Name="UserId" Type="Edm.Guid" Nullable="false">
+          <Annotation Term="Display.DisplayName" String="User Id" />
+        </Property>
+        <Property Name="UserName" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="User Name" />
+        </Property>
+        <Property Name="UserEmail" Type="Edm.String">
+          <Annotation Term="Display.DisplayName" String="User Email" />
+        </Property>
+      </EntityType>
+      <EntityType Name="WorkItemTypeField">
+        <Key>
+          <PropertyRef Name="ProjectSK" />
+          <PropertyRef Name="FieldName" />
+          <PropertyRef Name="WorkItemTypeCategory" />
+          <PropertyRef Name="WorkItemType" />
+        </Key>
+        <Property Name="ProjectSK" Type="Edm.Guid" Nullable="false" />
+        <Property Name="FieldName" Type="Edm.String" Nullable="false">
+          <Annotation Term="Display.DisplayName" String="Field Name" />
+        </Property>
+        <Property Name="FieldReferenceName" Type="Edm.String" Nullable="false">
+          <Annotation Term="Display.DisplayName" String="Field Reference Name" />
+        </Property>
+        <Property Name="FieldType" Type="Edm.String" Nullable="false">
+          <Annotation Term="Display.DisplayName" String="Field Type" />
+        </Property>
+        <Property Name="WorkItemTypeCategory" Type="Edm.String" Nullable="false">
+          <Annotation Term="Display.DisplayName" String="Work Item Type Category" />
+        </Property>
+        <Property Name="WorkItemType" Type="Edm.String" Nullable="false">
+          <Annotation Term="Display.DisplayName" String="Work Item Type" />
+        </Property>
+        <NavigationProperty Name="Project" Type="Microsoft.VisualStudio.Services.Analytics.Model.Project" Nullable="false">
+          <ReferentialConstraint Property="ProjectSK" ReferencedProperty="ProjectSK" />
+        </NavigationProperty>
+      </EntityType>
+      <Annotations Target="Default.Container">
+        <Annotation Term="Org.OData.Capabilities.V1.FilterFunctions">
+          <Collection>
+            <String>contains</String>
+            <String>endswith</String>
+            <String>startswith</String>
+            <String>length</String>
+            <String>indexof</String>
+            <String>substring</String>
+            <String>tolower</String>
+            <String>toupper</String>
+            <String>trim</String>
+            <String>concat</String>
+            <String>year</String>
+            <String>month</String>
+            <String>day</String>
+            <String>hour</String>
+            <String>minute</String>
+            <String>second</String>
+            <String>fractionalseconds</String>
+            <String>round</String>
+            <String>floor</String>
+            <String>ceiling</String>
+            <String>date</String>
+            <String>time</String>
+            <String>isof</String>
+            <String>cast</String>
+          </Collection>
+        </Annotation>
+      </Annotations>
+    </Schema>
+    <Schema Namespace="Default" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+      <EntityContainer Name="Container">
+        <EntitySet Name="WorkItemRevisions" EntityType="Microsoft.VisualStudio.Services.Analytics.Model.WorkItemRevision">
+          <NavigationPropertyBinding Path="Date" Target="Dates" />
+          <NavigationPropertyBinding Path="BoardLocations" Target="BoardLocations" />
+          <NavigationPropertyBinding Path="Teams" Target="Teams" />
+          <NavigationPropertyBinding Path="WorkItem" Target="WorkItems" />
+          <NavigationPropertyBinding Path="Project" Target="Projects" />
+          <NavigationPropertyBinding Path="Area" Target="Areas" />
+          <NavigationPropertyBinding Path="Iteration" Target="Iterations" />
+          <NavigationPropertyBinding Path="AssignedTo" Target="Users" />
+          <NavigationPropertyBinding Path="ChangedBy" Target="Users" />
+          <NavigationPropertyBinding Path="CreatedBy" Target="Users" />
+          <NavigationPropertyBinding Path="ActivatedBy" Target="Users" />
+          <NavigationPropertyBinding Path="ClosedBy" Target="Users" />
+          <NavigationPropertyBinding Path="ResolvedBy" Target="Users" />
+          <NavigationPropertyBinding Path="Tags" Target="Tags" />
+          <Annotation Term="Org.OData.Display.V1.DisplayName" String="Work Item Revisions" />
+        </EntitySet>
+        <EntitySet Name="WorkItems" EntityType="Microsoft.VisualStudio.Services.Analytics.Model.WorkItem">
+          <NavigationPropertyBinding Path="BoardLocations" Target="BoardLocations" />
+          <NavigationPropertyBinding Path="Teams" Target="Teams" />
+          <NavigationPropertyBinding Path="Revisions" Target="WorkItemRevisions" />
+          <NavigationPropertyBinding Path="Links" Target="WorkItemLinks" />
+          <NavigationPropertyBinding Path="Children" Target="WorkItems" />
+          <NavigationPropertyBinding Path="Parent" Target="WorkItems" />
+          <NavigationPropertyBinding Path="Project" Target="Projects" />
+          <NavigationPropertyBinding Path="Area" Target="Areas" />
+          <NavigationPropertyBinding Path="Iteration" Target="Iterations" />
+          <NavigationPropertyBinding Path="AssignedTo" Target="Users" />
+          <NavigationPropertyBinding Path="ChangedBy" Target="Users" />
+          <NavigationPropertyBinding Path="CreatedBy" Target="Users" />
+          <NavigationPropertyBinding Path="ActivatedBy" Target="Users" />
+          <NavigationPropertyBinding Path="ClosedBy" Target="Users" />
+          <NavigationPropertyBinding Path="ResolvedBy" Target="Users" />
+          <NavigationPropertyBinding Path="Tags" Target="Tags" />
+          <Annotation Term="Org.OData.Capabilities.V1.ExpandRestrictions">
+            <Record>
+              <PropertyValue Property="Expandable" Bool="true" />
+              <PropertyValue Property="NonExpandableProperties">
+                <Collection>
+                  <NavigationPropertyPath>Revisions</NavigationPropertyPath>
+                </Collection>
+              </PropertyValue>
+            </Record>
+          </Annotation>
+          <Annotation Term="Org.OData.Display.V1.DisplayName" String="Work Items" />
+        </EntitySet>
+        <EntitySet Name="WorkItemSnapshot" EntityType="Microsoft.VisualStudio.Services.Analytics.Model.WorkItemSnapshot">
+          <NavigationPropertyBinding Path="Date" Target="Dates" />
+          <NavigationPropertyBinding Path="Teams" Target="Teams" />
+          <NavigationPropertyBinding Path="Project" Target="Projects" />
+          <NavigationPropertyBinding Path="Area" Target="Areas" />
+          <NavigationPropertyBinding Path="Iteration" Target="Iterations" />
+          <NavigationPropertyBinding Path="AssignedTo" Target="Users" />
+          <NavigationPropertyBinding Path="ChangedBy" Target="Users" />
+          <NavigationPropertyBinding Path="CreatedBy" Target="Users" />
+          <NavigationPropertyBinding Path="ActivatedBy" Target="Users" />
+          <NavigationPropertyBinding Path="ClosedBy" Target="Users" />
+          <NavigationPropertyBinding Path="ResolvedBy" Target="Users" />
+          <NavigationPropertyBinding Path="Tags" Target="Tags" />
+        </EntitySet>
+        <EntitySet Name="WorkItemBoardSnapshot" EntityType="Microsoft.VisualStudio.Services.Analytics.Model.WorkItemBoardSnapshot">
+          <NavigationPropertyBinding Path="Date" Target="Dates" />
+          <NavigationPropertyBinding Path="BoardLocation" Target="BoardLocations" />
+          <NavigationPropertyBinding Path="Team" Target="Teams" />
+          <NavigationPropertyBinding Path="Project" Target="Projects" />
+          <NavigationPropertyBinding Path="Area" Target="Areas" />
+          <NavigationPropertyBinding Path="Iteration" Target="Iterations" />
+          <NavigationPropertyBinding Path="AssignedTo" Target="Users" />
+          <NavigationPropertyBinding Path="ChangedBy" Target="Users" />
+          <NavigationPropertyBinding Path="CreatedBy" Target="Users" />
+          <NavigationPropertyBinding Path="ActivatedBy" Target="Users" />
+          <NavigationPropertyBinding Path="ClosedBy" Target="Users" />
+          <NavigationPropertyBinding Path="ResolvedBy" Target="Users" />
+          <NavigationPropertyBinding Path="Tags" Target="Tags" />
+        </EntitySet>
+        <EntitySet Name="WorkItemsView" EntityType="Microsoft.VisualStudio.Services.Analytics.Model.WorkItemView">
+          <Annotation Term="Org.OData.Display.V1.DisplayName" String="Work Items - Today" />
+          <Annotation Term="Display.IsReportingView" Bool="true" />
+        </EntitySet>
+        <EntitySet Name="WorkItemDailySnapshotLast30DaysView" EntityType="Microsoft.VisualStudio.Services.Analytics.Model.WorkItemDailySnapshotLast30DaysView">
+          <Annotation Term="Org.OData.Display.V1.DisplayName" String="Work Items - Last 30 days" />
+          <Annotation Term="Display.IsReportingView" Bool="true" />
+        </EntitySet>
+        <EntitySet Name="WorkItemLinks" EntityType="Microsoft.VisualStudio.Services.Analytics.Model.WorkItemLink">
+          <NavigationPropertyBinding Path="SourceWorkItem" Target="WorkItems" />
+          <NavigationPropertyBinding Path="TargetWorkItem" Target="WorkItems" />
+          <Annotation Term="Org.OData.Display.V1.DisplayName" String="Work Item Links" />
+        </EntitySet>
+        <EntitySet Name="Dates" EntityType="Microsoft.VisualStudio.Services.Analytics.Model.CalendarDate">
+          <Annotation Term="Org.OData.Display.V1.DisplayName" String="Dates" />
+        </EntitySet>
+        <EntitySet Name="Projects" EntityType="Microsoft.VisualStudio.Services.Analytics.Model.Project">
+          <NavigationPropertyBinding Path="Areas" Target="Areas" />
+          <NavigationPropertyBinding Path="Iterations" Target="Iterations" />
+          <NavigationPropertyBinding Path="Teams" Target="Teams" />
+          <Annotation Term="Org.OData.Display.V1.DisplayName" String="Projects" />
+        </EntitySet>
+        <EntitySet Name="Iterations" EntityType="Microsoft.VisualStudio.Services.Analytics.Model.Iteration">
+          <NavigationPropertyBinding Path="Project" Target="Projects" />
+          <NavigationPropertyBinding Path="Teams" Target="Teams" />
+          <Annotation Term="Org.OData.Display.V1.DisplayName" String="Iterations" />
+        </EntitySet>
+        <EntitySet Name="Areas" EntityType="Microsoft.VisualStudio.Services.Analytics.Model.Area">
+          <NavigationPropertyBinding Path="Project" Target="Projects" />
+          <NavigationPropertyBinding Path="Teams" Target="Teams" />
+          <Annotation Term="Org.OData.Display.V1.DisplayName" String="Areas" />
+        </EntitySet>
+        <EntitySet Name="Tags" EntityType="Microsoft.VisualStudio.Services.Analytics.Model.Tag">
+          <NavigationPropertyBinding Path="Project" Target="Projects" />
+        </EntitySet>
+        <EntitySet Name="Teams" EntityType="Microsoft.VisualStudio.Services.Analytics.Model.Team">
+          <NavigationPropertyBinding Path="Project" Target="Projects" />
+          <NavigationPropertyBinding Path="Areas" Target="Areas" />
+          <NavigationPropertyBinding Path="Iterations" Target="Iterations" />
+          <Annotation Term="Org.OData.Display.V1.DisplayName" String="Teams" />
+        </EntitySet>
+        <EntitySet Name="BoardLocations" EntityType="Microsoft.VisualStudio.Services.Analytics.Model.BoardLocation">
+          <NavigationPropertyBinding Path="Team" Target="Teams" />
+        </EntitySet>
+        <EntitySet Name="Users" EntityType="Microsoft.VisualStudio.Services.Analytics.Model.User">
+          <Annotation Term="Org.OData.Display.V1.DisplayName" String="Users" />
+        </EntitySet>
+        <EntitySet Name="WorkItemTypeFields" EntityType="Microsoft.VisualStudio.Services.Analytics.Model.WorkItemTypeField">
+          <NavigationPropertyBinding Path="Project" Target="Projects" />
+        </EntitySet>
+      </EntityContainer>
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>
