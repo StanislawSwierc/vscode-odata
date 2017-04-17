@@ -68,63 +68,63 @@ export class ODataMetadataParser {
         };
     }
 
-    parseSchema(element: Element): ISchema {
+    parseSchema(element: XmlElement): ISchema {
         return <ISchema>{
-            namespace: element.getAttribute("Namespace"),
+            namespace: element.valueWithPath("Namespace"),
             entityTypes: this.parseCollection<IEntityType>(element, "EntityType", (e) => this.parseEntityType(e)),
             entityContainers: this.parseCollection<IEntityContainer>(element, "EntityContainer", (e) => this.parseEntityContainer(e))
         }
     }
 
-    parseEntityContainer(element: Element): IEntityContainer {
+    parseEntityContainer(element: XmlElement): IEntityContainer {
         return <IEntityContainer>{
-            name: element.getAttribute("Name"),
+            name: element.valueWithPath("Name"),
             entitySets: this.parseCollection<IEntitySet>(element, "EntitySet", (e) => this.parseEntitySet(e))
         }
     }
 
-    parseEntitySet(element: Element): IEntitySet {
+    parseEntitySet(element: XmlElement): IEntitySet {
         return <IEntitySet>{
-            name: element.getAttribute("Name"),
-            entityType: element.getAttribute("EntityType"),
+            name: element.valueWithPath("Name"),
+            entityType: element.valueWithPath("EntityType"),
             navigationPropertyBindings: this.parseCollection<INavigationPropertyBinding>(element, "NavigationPropertyBinding", (e) => this.parseNavigationPropertyBinding(e)),
             annotations: this.parseCollection(element, "Annotation", (e) => this.parseAnnotation(e))
         }
     }
 
-    parseNavigationPropertyBinding(element: Element): INavigationPropertyBinding {
+    parseNavigationPropertyBinding(element: XmlElement): INavigationPropertyBinding {
         return <INavigationPropertyBinding>{
-            path: element.getAttribute("Path"),
-            target: element.getAttribute("Target")
+            path: element.valueWithPath("Path"),
+            target: element.valueWithPath("Target")
         }
     }
 
-    parseEntityType(element: Element): IEntityType {
+    parseEntityType(element: XmlElement): IEntityType {
         return <IEntityType>{
-            name: element.getAttribute("Name"),
+            name: element.valueWithPath("Name"),
             properties: this.parseCollection<IProperty>(element, "Property", (e) => this.parseProperty(e))
         }
     }
 
-    parseProperty(element: Element): IProperty {
+    parseProperty(element: XmlElement): IProperty {
         return <IProperty>{
-            name: element.getAttribute("Name"),
-            type: element.getAttribute("Type"),
-            nullable: element.hasAttribute("Nullable") ? !!element.getAttribute("Nullable") : undefined,
+            name: element.valueWithPath("Name"),
+            type: element.valueWithPath("Type"),
+            nullable: element.valueWithPath("Nullable") ? !!element.valueWithPath("Nullable") : undefined,
             annotations: this.parseCollection(element, "Annotation", (e) => this.parseAnnotation(e))
         };
     }
 
-    parseAnnotation(element: Element): IAnnotation {
+    parseAnnotation(element: XmlElement): IAnnotation {
         // TODO: support different types of annotations
         return <IAnnotation>{
-            term: element.getAttribute("Term"),
-            value: element.getAttribute("String")
+            term: element.valueWithPath("Term"),
+            value: element.valueWithPath("String")
         }
     }
 
-    parseCollection<T>(element: Element, name: string, select: (element: Element) => T) {
-        let nodes = element.getElementsByTagName(name);
+    parseCollection<T>(element: XmlElement, name: string, select: (element: XmlElement) => T) {
+        let nodes = element.childrenNamed(name);
         let result = new Array<T>();
 
         for (let i = 0; i < nodes.length; i++) {
