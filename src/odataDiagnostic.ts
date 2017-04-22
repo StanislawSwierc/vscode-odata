@@ -1,15 +1,14 @@
-import * as vscode from 'vscode';
+import { Diagnostic, Range, Position, DiagnosticSeverity, DiagnosticCollection, TextDocumentChangeEvent } from 'vscode';
 import { ODataMode } from './odataMode';
-import * as Parser from "./odataParser";
-
 import * as syntax from "./odataSyntax";
 
 class DiagnosticSyntaxVisitor extends syntax.SyntaxWalker {
-    errors : syntax.ErrorSyntax[];
+    errors: syntax.ErrorSyntax[];
 
-    constructor() {
-        super();
+    getErrors(node: syntax.SyntaxNode): syntax.ErrorSyntax[] {
         this.errors = new Array<syntax.ErrorSyntax>();
+        this.visit(node);
+        return this.errors;
     }
 
     visitDefault(node: syntax.SyntaxNode) {
@@ -19,16 +18,47 @@ class DiagnosticSyntaxVisitor extends syntax.SyntaxWalker {
     }
 }
 
+class ODataBinder extends syntax.SyntaxWalker {
+    diagnostics: Diagnostic[];
+    // metadata:
+    // currentEntitySet
+
+    bind(node: syntax.SyntaxNode): Diagnostic[] {
+        this.diagnostics = new Array<Diagnostic>();
+        this.visit(node);
+        return this.diagnostics;
+    }
+
+    visitPrimitiveProperty(node: syntax.SelectProprty) {
+        if (node.propertyName !== "stasiu") {
+            this.diagnostics.push(new Diagnostic(
+                createRangeFromSpan(node.span),
+                `Cannot find property '${node.propertyName}'.`,
+                DiagnosticSeverity.Error));
+        } else {
+            node.symbol = {
+                error: "lol"
+            }
+        }
+    }
+}
+
+function createRangeFromSpan(span: syntax.Span): Range {
+    return new Range(
+        new Position(span.start.line - 1, span.start.column - 1),
+        new Position(span.end.line - 1, span.end.column - 1));
+}
+
 
 export class ODataDiagnosticProvider {
     private runner: NodeJS.Timer;
-    private diagnostics: vscode.DiagnosticCollection;
+    private diagnostics: DiagnosticCollection;
 
-    constructor(diagnostics: vscode.DiagnosticCollection) {
+    constructor(diagnostics: DiagnosticCollection) {
         this.diagnostics = diagnostics;
     }
 
-    public onDidChangeTextDocument = (e: vscode.TextDocumentChangeEvent) => {
+    public onDidChangeTextDocument = (e: TextDocumentChangeEvent) => {
         if (e.document.languageId !== ODataMode.language) {
             return;
         }
@@ -43,39 +73,45 @@ export class ODataDiagnosticProvider {
         }, 500);
     }
 
-    private onDidChangeTextDocumentStable = (e: vscode.TextDocumentChangeEvent) => {
+    private onDidChangeTextDocumentStable = (e: TextDocumentChangeEvent) => {
         this.diagnostics.clear();
+        let uri = e.document.uri;
 
         try {
-            let tree = Parser.parse(e.document.getText())
+            let tree = syntax.Parser.parse(e.document.getText())
+            let diagnostics = new Array<Diagnostic>();
 
             let diagnosticSyntaxVisitor = new DiagnosticSyntaxVisitor();
-            diagnosticSyntaxVisitor.visit(tree);
-            
-            if (diagnosticSyntaxVisitor.errors.length > 0) {
-                let errorNode = diagnosticSyntaxVisitor.errors[0];
-                this.diagnostics.set(e.document.uri, [
-                    new vscode.Diagnostic(
-                        new vscode.Range(
-                            new vscode.Position(errorNode.span.start.line - 1, errorNode.span.start.column - 1),
-                            new vscode.Position(errorNode.span.end.line - 1, errorNode.span.end.column - 1)),
+            let errors = diagnosticSyntaxVisitor.getErrors(tree.root);
+
+            if (errors.length > 0) {
+                let errorNode = errors[0];
+                diagnostics = diagnostics.concat([
+                    new Diagnostic(
+                        new Range(
+                            new Position(errorNode.span.start.line - 1, errorNode.span.start.column - 1),
+                            new Position(errorNode.span.end.line - 1, errorNode.span.end.column - 1)),
                         "Unexpected character detected.",
-                        vscode.DiagnosticSeverity.Error)
+                        DiagnosticSeverity.Error)
                 ]);
             }
 
-
+            let binder = new ODataBinder();
+            diagnostics = diagnostics.concat(binder.bind(tree.root));
+            
+            this.diagnostics.set(uri, diagnostics);
         } catch (error) {
-            let syntaxError = <Parser.SyntaxError>error;
+           if (error instanceof syntax.SyntaxError) {
+                let syntaxError = <syntax.SyntaxError>error;
 
-            this.diagnostics.set(e.document.uri, [
-                new vscode.Diagnostic(
-                    new vscode.Range(
-                        new vscode.Position(syntaxError.location.start.line - 1, syntaxError.location.start.column - 1),
-                        new vscode.Position(syntaxError.location.end.line - 1, syntaxError.location.end.column - 1)),
-                    syntaxError.message,
-                    vscode.DiagnosticSeverity.Error)
-            ]);
+                this.diagnostics.set(e.document.uri, [
+                    new Diagnostic(
+                        createRangeFromSpan(syntaxError.location),
+                        syntaxError.message,
+                        DiagnosticSeverity.Error)
+                ]);
+            }
+
         }
     }
 }

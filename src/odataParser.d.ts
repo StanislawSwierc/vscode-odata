@@ -1,6 +1,4 @@
-﻿import * as SyntaxModel from "./odataSyntax"
-
-export interface Location {
+﻿export interface Location {
 	line: number;
 	column: number;
 	offset: number;
@@ -22,4 +20,4 @@ export class SyntaxError {
 	message: string;
 }
 
-export function parse(text: string): SyntaxModel.SyntaxNode;
+export function parse(text: string): any;

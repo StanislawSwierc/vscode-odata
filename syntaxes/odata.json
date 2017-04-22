@@ -6,6 +6,10 @@
 	],
 	"patterns": [
 		{
+			"name": "entity.other.url.odata",
+			"match": "\\bhttps?://[^?]*"
+		},
+		{
 			"name": "comment.line.block.odata",
 			"begin": "/\\*",
 			"end": "\\*/"

@@ -1,4 +1,9 @@
 import { XmlDocument, XmlElement } from 'xmldoc';
+import * as Syntax from './odataSyntax'
+
+export interface IODataMetadataService {
+    getMetadataForDocument(uri: string, tree: Syntax.SyntaxTree): Promise<IMetadata>;
+}
 
 export interface IEntityType {
     name: string;

@@ -1,11 +1,18 @@
 root
-  = _ select:select error:error? { 
-    return { root: select, error: error}; 
+  = serviceRoot '?' _ select:select error:error? { 
+    return { kind: "Uri", select: select, error: error}; 
   }
+
+// TODO: Implement full [RFC3986]
+serviceRoot   = ( "https" / "http" ) "://" host (":" port)? ( "/" segment_nz )*
+host          = ALPHA+
+port          = DIGIT*
+segment_nz    = ALPHA+
+
 
 select 
   = '$select' _ EQ _ head:selectItem _ tail:(COMMA _ selectItem _)* {
-  	var items = tail.map(function(x) { return x[3]; });
+  	var items = tail.map(function(x) { return x[2]; });
     items.splice(0, 0, head);
     return {
         kind: "Select",
