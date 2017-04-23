@@ -1,6 +1,11 @@
 root
-  = serviceRoot '?' _ select:select error:error? { 
-    return { kind: "Uri", select: select, error: error}; 
+  = serviceRoot:$serviceRoot '?' _ select:select error:error? { 
+    return { 
+      kind: "Uri", 
+      serviceRoot: serviceRoot,
+      select: select, 
+      error: error
+    }; 
   }
 
 // TODO: Implement full [RFC3986]

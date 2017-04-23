@@ -61,6 +61,7 @@ export interface SelectProprty extends SyntaxNode {
 }
 
 export interface UriSyntax extends SyntaxNode {
+    serviceRoot: string;
     select?: SelectSyntax;
 }
 
@@ -121,7 +122,7 @@ export class SyntaxWalker extends SyntaxVisitor<void> {
 
 export class Parser {
     static parse(text: string) : SyntaxTree {
-        let root = parser.parse(text);
+        let root = parse(text);
         return new SyntaxTree(root);
     }
 }

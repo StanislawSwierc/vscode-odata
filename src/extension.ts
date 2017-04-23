@@ -5,6 +5,7 @@ import * as vscode from 'vscode';
 
 import { ODataMode } from './odataMode';
 import { ODataDiagnosticProvider } from './odataDiagnostic';
+import { ODataDocumentFormattingEditProvider } from "./odataFormatter"
 
 import {
     TextDocument, Position, CompletionItem, CompletionList, CompletionItemKind, Hover, Range, SymbolInformation, Diagnostic,
@@ -90,6 +91,10 @@ export function activate(context: vscode.ExtensionContext) {
     let completionItemProvider = new ODataCompletionItemProvider();
     context.subscriptions.push(vscode.languages.registerCompletionItemProvider(ODataMode,
         completionItemProvider, ...completionItemProvider.triggerCharacters));
+
+    let documentFormattingEditProvider = new ODataDocumentFormattingEditProvider();
+    context.subscriptions.push(vscode.languages.registerDocumentFormattingEditProvider(ODataMode,
+        documentFormattingEditProvider));
 
     let diagnosticCollection = vscode.languages.createDiagnosticCollection('odata-diagnostics');
     let diagnosticsProvider = new ODataDiagnosticProvider(diagnosticCollection);

@@ -149,8 +149,13 @@
 
         peg$c0 = "?",
         peg$c1 = peg$literalExpectation("?", false),
-        peg$c2 = function(select, error) { 
-            return { kind: "Uri", select: select, error: error}; 
+        peg$c2 = function(serviceRoot, select, error) { 
+            return { 
+              kind: "Uri", 
+              serviceRoot: serviceRoot,
+              select: select, 
+              error: error
+            }; 
           },
         peg$c3 = "https",
         peg$c4 = peg$literalExpectation("https", false),
@@ -400,7 +405,13 @@
       var s0, s1, s2, s3, s4, s5;
 
       s0 = peg$currPos;
-      s1 = peg$parseserviceRoot();
+      s1 = peg$currPos;
+      s2 = peg$parseserviceRoot();
+      if (s2 !== peg$FAILED) {
+        s1 = input.substring(s1, peg$currPos);
+      } else {
+        s1 = s2;
+      }
       if (s1 !== peg$FAILED) {
         if (input.charCodeAt(peg$currPos) === 63) {
           s2 = peg$c0;
@@ -420,7 +431,7 @@
               }
               if (s5 !== peg$FAILED) {
                 peg$savedPos = s0;
-                s1 = peg$c2(s4, s5);
+                s1 = peg$c2(s1, s4, s5);
                 s0 = s1;
               } else {
                 peg$currPos = s0;
