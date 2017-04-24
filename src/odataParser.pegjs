@@ -1,5 +1,5 @@
 root
-  = serviceRoot:$serviceRoot '?' _ select:select error:error? { 
+  = serviceRoot:$serviceRoot _ '?' _ select:select error:error? { 
     return { 
       kind: "Uri", 
       serviceRoot: serviceRoot,
@@ -10,9 +10,9 @@ root
 
 // TODO: Implement full [RFC3986]
 serviceRoot   = ( "https" / "http" ) "://" host (":" port)? ( "/" segment_nz )*
-host          = ALPHA+
+host          = [A-Za-z.]+
 port          = DIGIT*
-segment_nz    = ALPHA+
+segment_nz    = [A-Za-z_-]+
 
 
 select 

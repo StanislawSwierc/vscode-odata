@@ -36,6 +36,32 @@
         "path": "./syntaxes/odata.json"
       }
     ],
+    "configuration": {
+      "id": "odata",
+      "type": "object",
+      "title": "OData",
+      "properties": {
+        "odata.metadata.map": {
+          "type": "array",
+          "description": "Associate OData metadata files in the current project",
+          "items": {
+            "type": "object",
+            "properties": {
+              "url": {
+                "type": "string",
+                "default": "http://services.odata.org/V4/TripPinServiceRW",
+                "description": "A URL to OData endpoint."
+              },
+              "path": {
+                "type": "string",
+                "default": "/user.metadata.xml",
+                "description": "A URL to OData endpoint."
+              }
+            }
+          }
+        }
+      }
+    },
     "commands": [
       {
         "command": "extension.sayHello",
