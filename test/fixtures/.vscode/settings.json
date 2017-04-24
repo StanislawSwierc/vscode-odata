@@ -1,4 +1,5 @@
 {
+    "odata.completion.enable": true,
     "odata.metadata.map": [
         { "url": "https://stansw.analytics.visualstudio.com/_odata", "path": "metadata.xml"}
     ]

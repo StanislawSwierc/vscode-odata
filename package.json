@@ -41,9 +41,25 @@
       "type": "object",
       "title": "OData",
       "properties": {
+        "odata.diagnostic.enable": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable/disable default OData diagnostic (requires restart)"
+        },
+        "odata.completion.enable": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable/disable default OData completion (requires restart)"
+        },
+        "odata.format.enable": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable/disable default OData formatter (requires restart)"
+        },
         "odata.metadata.map": {
           "type": "array",
           "description": "Associate OData metadata files in the current project",
+          "default": [],
           "items": {
             "type": "object",
             "properties": {

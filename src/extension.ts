@@ -70,6 +70,22 @@ class ODataCompletionItemProvider implements vscode.CompletionItemProvider {
     }
 }
 
+
+interface ODataConfiguration extends vscode.WorkspaceConfiguration {
+    diagnostic: {
+        enable: boolean;
+    };
+    completion: {
+        enable: boolean;
+    };
+    format: {
+        enable: boolean;
+    };
+    metadata: {
+        map: Array<{ url: string, path: string }>;
+    }
+}
+
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
@@ -77,6 +93,8 @@ export function activate(context: vscode.ExtensionContext) {
     // Use the console to output diagnostic information (console.log) and errors (console.error)
     // This line of code will only be executed once when your extension is activated
     console.log('Congratulations, your extension "vscode-odata" is now active!');
+
+    let configuration = vscode.workspace.getConfiguration('odata') as ODataConfiguration;
 
     // The command has been defined in the package.json file
     // Now provide the implementation of the command with  registerCommand
@@ -88,19 +106,25 @@ export function activate(context: vscode.ExtensionContext) {
         vscode.window.showInformationMessage('Hello World!');
     });
 
-    let completionItemProvider = new ODataCompletionItemProvider();
-    context.subscriptions.push(vscode.languages.registerCompletionItemProvider(ODataMode,
-        completionItemProvider, ...completionItemProvider.triggerCharacters));
+    if (configuration.completion.enable) {
+        let completionItemProvider = new ODataCompletionItemProvider();
+        context.subscriptions.push(vscode.languages.registerCompletionItemProvider(ODataMode,
+            completionItemProvider, ...completionItemProvider.triggerCharacters));
+    }
 
-    let documentFormattingEditProvider = new ODataDocumentFormattingEditProvider();
-    context.subscriptions.push(vscode.languages.registerDocumentFormattingEditProvider(ODataMode,
-        documentFormattingEditProvider));
+    if (configuration.format.enable) {
+        let documentFormattingEditProvider = new ODataDocumentFormattingEditProvider();
+        context.subscriptions.push(vscode.languages.registerDocumentFormattingEditProvider(ODataMode,
+            documentFormattingEditProvider));
+    }
 
-    let diagnosticCollection = vscode.languages.createDiagnosticCollection('odata-diagnostics');
-    let diagnosticsProvider = new ODataDiagnosticProvider(diagnosticCollection);
-    vscode.workspace.onDidChangeTextDocument(diagnosticsProvider.onDidChangeTextDocument, null, context.subscriptions);
+    if (configuration.diagnostic.enable) {
+        let diagnosticCollection = vscode.languages.createDiagnosticCollection('odata-diagnostics');
+        let diagnosticsProvider = new ODataDiagnosticProvider(diagnosticCollection);
+        vscode.workspace.onDidChangeTextDocument(diagnosticsProvider.onDidChangeTextDocument, null, context.subscriptions);
+    }
 
-    context.subscriptions.push(disposable)  ;
+    context.subscriptions.push(disposable);
 }
 
 // this method is called when your extension is deactivated
