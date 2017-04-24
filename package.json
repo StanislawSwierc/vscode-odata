@@ -53,8 +53,18 @@
         },
         "odata.format.enable": {
           "type": "boolean",
-          "default": false,
+          "default": true,
           "description": "Enable/disable default OData formatter (requires restart)"
+        },
+        "odata.format.decode": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable/disable decoding as part of OData formatter (requires restart)"
+        },
+        "odata.format.syntax": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable/disable syntax-aware OData formatter (requires restart)"
         },
         "odata.metadata.map": {
           "type": "array",

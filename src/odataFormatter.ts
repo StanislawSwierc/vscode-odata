@@ -11,6 +11,12 @@ import {
 } from 'vscode'
 import * as syntax from "./odataSyntax";
 
+export interface ODataFormattingConfiguration {
+    enable: boolean,
+    decode: boolean,
+    syntax: boolean,
+}
+
 interface ODataFormattingOptions extends FormattingOptions {
     lineSize: number;
     newLine: string;
@@ -50,21 +56,37 @@ class FormattingSyntaxVisitor extends syntax.SyntaxVisitor<string> {
 }
 
 export class ODataDocumentFormattingEditProvider implements DocumentFormattingEditProvider {
+    configuration: ODataFormattingConfiguration;
+
+    constructor(configuration: ODataFormattingConfiguration) {
+        this.configuration = configuration;
+    }
+
     provideDocumentFormattingEdits(document: TextDocument, options: FormattingOptions, token: CancellationToken): ProviderResult<TextEdit[]> {
         options.lineSize = 100;
         options.newLine = "\r\n"
         options.indent = "    ";
 
-        try {
-            let text = document.getText();
-            let range = new Range(new Position(0, 0), document.positionAt(text.length));
-            let tree = syntax.Parser.parse(text);
-            let visitor = new FormattingSyntaxVisitor(options as ODataFormattingOptions);
-            let formattedText = visitor.visit(tree.root);
-            return [TextEdit.replace(range, formattedText)];
-        } catch (error) {
-            console.error(`Formatting could not be performed due to an error: ${error}`);
-            return [];
-        }       
+        let text = document.getText();
+        let range = new Range(new Position(0, 0), document.positionAt(text.length));
+
+        // Perform syntax aware formatting.
+        if (this.configuration.syntax) {
+            try {
+                let tree = syntax.Parser.parse(text);
+                let visitor = new FormattingSyntaxVisitor(options as ODataFormattingOptions);
+                text = visitor.visit(tree.root);
+            } catch (error) {
+                console.error(`Formatting could not be performed due to an error: ${error}`);
+            }
+        }
+
+        // Decode URI in case it was copied directly from the address bar..
+        if (this.configuration.decode) {
+            text = decodeURI(text)
+        }
+
+        // Replace whole document.
+        return [TextEdit.replace(range, text)];
     }
 }

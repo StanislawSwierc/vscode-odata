@@ -5,7 +5,7 @@ import * as vscode from 'vscode';
 
 import { ODataMode } from './odataMode';
 import { ODataDiagnosticProvider } from './odataDiagnostic';
-import { ODataDocumentFormattingEditProvider } from "./odataFormatter"
+import { ODataDocumentFormattingEditProvider, ODataFormattingConfiguration } from "./odataFormatter"
 
 import {
     TextDocument, Position, CompletionItem, CompletionList, CompletionItemKind, Hover, Range, SymbolInformation, Diagnostic,
@@ -78,9 +78,7 @@ interface ODataConfiguration extends vscode.WorkspaceConfiguration {
     completion: {
         enable: boolean;
     };
-    format: {
-        enable: boolean;
-    };
+    format: ODataFormattingConfiguration;
     metadata: {
         map: Array<{ url: string, path: string }>;
     }
@@ -113,7 +111,7 @@ export function activate(context: vscode.ExtensionContext) {
     }
 
     if (configuration.format.enable) {
-        let documentFormattingEditProvider = new ODataDocumentFormattingEditProvider();
+        let documentFormattingEditProvider = new ODataDocumentFormattingEditProvider(configuration.format);
         context.subscriptions.push(vscode.languages.registerDocumentFormattingEditProvider(ODataMode,
             documentFormattingEditProvider));
     }
