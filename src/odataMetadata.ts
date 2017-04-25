@@ -1,8 +1,13 @@
 import { XmlDocument, XmlElement } from 'xmldoc';
 import * as Syntax from './odataSyntax'
+import * as fs from 'fs-promise';
+
+export interface ODataMetadataConfiguration {
+    map: Array<{ url: string, path: string }>;
+}
 
 export interface IODataMetadataService {
-    getMetadataForDocument(uri: string, tree: Syntax.SyntaxTree): Promise<IMetadata>;
+    getMetadataForDocument(uri: string, tree: Syntax.SyntaxTree): Thenable<IMetadata>;
 }
 
 export interface IEntityType {
@@ -117,8 +122,9 @@ export class ODataMetadataParser {
     }
 
     parseProperty(element: XmlElement): IProperty {
+        let a = 10;
         return <IProperty>{
-            name: element.valueWithPath("Name"),
+            name: (<any>element).attr["Name"],
             type: element.valueWithPath("Type"),
             nullable: element.valueWithPath("Nullable") ? !!element.valueWithPath("Nullable") : undefined,
             annotations: this.parseCollection(element, "Annotation", (e) => this.parseAnnotation(e))
@@ -174,4 +180,30 @@ export function createPropertyMap(metadata: IMetadata): { [id: string]: IPropert
         (acc, x) => { acc[x.referenceName] = x.property; return acc; },
         {}
         );
+}
+
+export class LocalODataMetadataService implements IODataMetadataService {
+    configuration: ODataMetadataConfiguration;
+    cache: { [key: string]: Thenable<IMetadata>; } = {};
+
+    constructor(configuraiton: ODataMetadataConfiguration) {
+        this.configuration = configuraiton;
+    }
+
+    getMetadataForDocument(uri: string, tree: Syntax.SyntaxTree): Thenable<IMetadata> {
+        let serviceRoot = tree.root.serviceRoot.toLowerCase();
+        let mapEntry = this.configuration.map.find(_ => serviceRoot.startsWith(_.url.toLocaleLowerCase()));
+        if (mapEntry) {
+            if (this.cache[mapEntry.path] === undefined) {
+                this.cache[mapEntry.path] = fs.readFile(mapEntry.path, { encoding: "utf8" })
+                    .then(text => {
+                        let parser = new ODataMetadataParser();
+                        return parser.parse(text);
+                    });
+            }
+            return this.cache[mapEntry.path];
+        } else {
+            return Promise.reject(`There is no entry registered in the 'odata.metadata.map' for uri '${serviceRoot}'`);
+        }
+    }
 }

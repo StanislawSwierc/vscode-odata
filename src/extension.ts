@@ -2,10 +2,13 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
+import * as _ from 'lodash';
 
 import { ODataMode } from './odataMode';
 import { ODataDiagnosticProvider } from './odataDiagnostic';
-import { ODataDocumentFormattingEditProvider, ODataFormattingConfiguration } from "./odataFormatter"
+import { ODataDocumentFormattingEditProvider, ODataFormattingConfiguration } from "./odataFormatter";
+import { IODataMetadataService, LocalODataMetadataService, ODataMetadataConfiguration } from "./odataMetadata";
+import * as syntax from "./odataSyntax";
 
 import {
     TextDocument, Position, CompletionItem, CompletionList, CompletionItemKind, Hover, Range, SymbolInformation, Diagnostic,
@@ -15,6 +18,11 @@ import {
 
 class ODataCompletionItemProvider implements vscode.CompletionItemProvider {
     triggerCharacters = [".", "=", ",", "(", "/", "$", "'"];
+    metadataService: IODataMetadataService;
+
+    constructor(metadataService: IODataMetadataService) {
+        this.metadataService = metadataService;
+    }
 
     provideCompletionItems(document: TextDocument, position: Position, token: CancellationToken): ProviderResult<CompletionList> {
         if (document.getWordRangeAtPosition(position, /\$[a-zA-Z]*/)) {
@@ -58,15 +66,38 @@ class ODataCompletionItemProvider implements vscode.CompletionItemProvider {
             ]);
         }
 
-        return new CompletionList([
-            {
-                label: "stasiu",
-                insertText: "stasiu to super bohater jest",
-                documentation: "super doc",
-                kind: CompletionItemKind.Field,
+        try {
+            let tree = syntax.Parser.parse(document.getText());
+            return this.metadataService.getMetadataForDocument(document.uri.toString(), tree)
+                .then(metadata => {
+                    let functions = [
+                        new CompletionItem("filter", CompletionItemKind.Function),
+                        new CompletionItem("groupby", CompletionItemKind.Function),
+                        new CompletionItem("aggregate", CompletionItemKind.Function),
+                        new CompletionItem("contains", CompletionItemKind.Function),
+                        new CompletionItem("startswith", CompletionItemKind.Function)
+                        // TODO: Add all functions
+                    ];
 
+                    let items = _.chain(metadata.schemas)
+                        .flatMap(s => _.flatMap(s.entityTypes, e => _.flatMap(e.properties, p => p.name)))
+                        .uniq()
+                        .map(p => new CompletionItem(p, CompletionItemKind.Property))
+                        .concat(functions)
+                        .value();
+
+                    return new CompletionList(items);
+                }, reason => {
+                    console.error(reason);
+                });
+        } catch (error) {
+            if (error instanceof syntax.SyntaxError) {
+                let syntaxError = <syntax.SyntaxError>error;
+                console.error(syntaxError.message);
+            } else {
+                console.error(error);
             }
-        ]);
+        }
     }
 }
 
@@ -79,9 +110,7 @@ interface ODataConfiguration extends vscode.WorkspaceConfiguration {
         enable: boolean;
     };
     format: ODataFormattingConfiguration;
-    metadata: {
-        map: Array<{ url: string, path: string }>;
-    }
+    metadata: ODataMetadataConfiguration;
 }
 
 // this method is called when your extension is activated
@@ -105,7 +134,8 @@ export function activate(context: vscode.ExtensionContext) {
     });
 
     if (configuration.completion.enable) {
-        let completionItemProvider = new ODataCompletionItemProvider();
+        let metadataService = new LocalODataMetadataService(configuration.metadata);
+        let completionItemProvider = new ODataCompletionItemProvider(metadataService);
         context.subscriptions.push(vscode.languages.registerCompletionItemProvider(ODataMode,
             completionItemProvider, ...completionItemProvider.triggerCharacters));
     }

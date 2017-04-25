@@ -2,7 +2,7 @@
   "name": "vscode-odata",
   "displayName": "vscode-odata",
   "description": "OData query language support.",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "publisher": "stansw",
   "engines": {
     "vscode": "^1.10.0"
@@ -124,6 +124,8 @@
     "vscode": "^1.0.0"
   },
   "dependencies": {
+    "@types/lodash": "^4.14.63",
+    "lodash": "^4.17.4",
     "xmldoc": "^1.0.0"
   }
 }

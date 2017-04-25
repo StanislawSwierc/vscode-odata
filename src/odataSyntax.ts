@@ -31,9 +31,9 @@ export interface Span {
 }
 
 export class SyntaxTree {
-    root: SyntaxNode;
+    root: UriSyntax;
 
-    constructor(root: SyntaxNode) {
+    constructor(root: UriSyntax) {
         this.root = root;
     }
 }
