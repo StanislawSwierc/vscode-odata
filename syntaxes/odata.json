@@ -25,7 +25,7 @@
 		},
 		{
 			"name": "constant.language.literal.odata",
-			"match": "\\$(it|root)\\b"
+			"match": "\\$(it|root|$count)\\b"
 		},
 		{
 			"name": "constant.numeric.odata",
@@ -45,7 +45,11 @@
 		},
 		{
 			"name": "keyword.control.odata",
-			"match": "\\$(apply|count|filter|orderby|select|skip|top)\\b"
+			"match": "\\$(apply|count|filter|orderby|select|skip|top|expand)\\b"
+		},
+		{
+			"name": "keyword.other.odata",
+			"match": "\\b(with|as)\\b"
 		},
 		{
 			"name": "keyword.operator.arithmetic.odata",
@@ -63,7 +67,15 @@
 			"name": "entity.name.function.odata",
 			"match": "\\b(concat|contains|endswith|indexof|length|startswith|substring|tolower|toupper|trim|date|day|fractionalseconds|hour|maxdatetime|mindatetime|minute|month|now|second|time|totaloffsetminutes|totalseconds|year|ceiling|floor|round|cast|isof|geo\\.distance|geo\\.intersects|geo\\.length|any|all)\\b"
 		},
-				{
+		{
+			"name": "entity.name.function.odata",
+			"match": "\\b(sum|min|max|average|countdistinct)\\b"
+		},
+		{
+			"name": "entity.name.function.odata",
+			"match": "\\b(aggregate|topcount|topsum|toppercent|bottomcount|bottomsum|bottompercent|identity|concat|groupby|filter|expand)\\b"
+		},
+		{
 			"match": "(?:([_[:alpha:]][_$[:alnum:]]*)(/))*(any|all)",
 			"captures": {
 				"1": {
@@ -77,7 +89,7 @@
 				}
 			}
 		},
-				{
+		{
 			"match": "(?:([_[:alpha:]][_$[:alnum:]]*)(\\.))+([_[:alpha:]][_$[:alnum:]]*)",
 			"captures": {
 				"1": {
