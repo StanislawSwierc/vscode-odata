@@ -28,16 +28,32 @@
 			"match": "\\$(it|root|$count)\\b"
 		},
 		{
+			"name": "constant.numeric.guid.odata",
+			"match": "\\b[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}\\b"
+		},
+		{
+			"name": "constant.numeric.date.odata",
+			"match": "\\b([0-9]{4}-[0-9]{2}-[0-9]{2})\\b"
+		},
+		{
+			"name": "constant.numeric.datetimeoffset.odata",
+			"match": "\\b([0-9]{4}-[0-9]{2}-[0-9]{2}(T[0-9][0-9]:[0-9][0-9](:[0-9][0-9](\\.[0-9]+)?)?)?([zZ]|([+-])([01][0-9]|2[0-3]):?([0-5][0-9])?))\\b"
+		},
+		{
+			"name": "constant.numeric.timeofday.odata",
+			"match": "\\b([0-9][0-9]:[0-9][0-9](:[0-9][0-9](\\.[0-9]+)?)?)\\b"
+		},
+		{
 			"name": "constant.numeric.odata",
-			"match": "\\b([0-9]+\\.?[0-9]*)\\b"
+			"match": "\\b([0-9]+\\.?[0-9]*([eE]-?[0-9]+)?)\\b"
+		},
+		{
+			"name": "constant.numeric.odata",
+			"match": "\\b(INF)\\b"
 		},
 		{
 			"name": "constant.numeric.hex.odata",
 			"match": "\\b(0[xX][0-9a-fA-F]+)\\b"
-		},
-		{
-			"name": "constant.guid.odata",
-			"match": "\\b[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}\\b"
 		},
 		{
 			"name": "constant.language.odata",
@@ -50,6 +66,10 @@
 		{
 			"name": "keyword.other.odata",
 			"match": "\\b(with|as)\\b"
+		},
+		{
+			"name": "keyword.other.odata",
+			"match": "\\b(binary|duration|geography)(?=')"
 		},
 		{
 			"name": "keyword.operator.arithmetic.odata",

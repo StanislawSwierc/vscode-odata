@@ -1,6 +1,30 @@
 https://stansw.analytics.visualstudio.com/vscode-odata/_odata/WorkItems
     ?$select=property,stasiu,sdf,sdf/sdf
     &$filter=sadfsdf/sdfd  eq 'dsfsf'
+        // Primitive Literals
+        // http://docs.oasis-open.org/odata/odata/v4.0/odata-v4.0-part2-url-conventions.html#_Toc371341809
+        NullValue eq null
+        TrueValue eq true
+        FalseValue eq false
+        Custom.Base64UrlDecode(binary'T0RhdGE') eq 'OData'
+        IntegerValue lt -128
+        DoubleValue ge 0.31415926535897931e1
+        DoubleValue ge 0.31415926535897931e-1
+        SingleValue eq INF
+        DecimalValue eq 34.95
+        StringValue eq 'Say Hello,then go'
+        DateValue eq 2012-12-03
+        DateTimeOffsetValue eq 2012-12-03T07:16:23Z
+        DateTimeOffsetValue eq 2012-12-03T07:16:23+01
+        DateTimeOffsetValue eq 2012-12-03T07:16:23+0530
+        DateTimeOffsetValue eq 2012-12-03T07:16:23+05:30
+        DurationValue eq duration'P12DT23H59M59.999999999999S'
+        TimeOfDayValue eq 07:59:59.999
+        GuidValue eq 01234567-89ab-cdef-0123-456789abcdef
+        Int64Value eq 0
+        ColorEnumValue eq Sales.Pattern'Yellow',
+        geo.distance(Location,geography'SRID=0;Point(142.1 64.1)')
+        // Functions
         and startswith(sdf, 'sdf')
         and Iterations/any(d:d/Name eq 'sdf')
-    &$filter=isof($it, NorthwindModel.BigOrder)
+    &$filter=isof($it, NorthwindModel.BigOrder)`
