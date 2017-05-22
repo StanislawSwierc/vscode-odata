@@ -27,4 +27,4 @@ https://stansw.analytics.visualstudio.com/vscode-odata/_odata/WorkItems
         // Functions
         and startswith(sdf, 'sdf')
         and Iterations/any(d:d/Name eq 'sdf')
-    &$filter=isof($it, NorthwindModel.BigOrder)`
+    &$filter=isof($it, NorthwindModel.BigOrder)
