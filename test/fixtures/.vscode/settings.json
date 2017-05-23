@@ -1,5 +1,12 @@
 {
     "odata.completion.enable": true,
+    
+    "odata.diagnostic.enable": false,
+
+    "odata.format.enable": true,
+    "odata.format.syntax": false,
+    "odata.format.decode": true,
+    
     "odata.metadata.map": [
         { 
             "url": "https://stansw.analytics.visualstudio.com/vscode-odata/_odata", 
