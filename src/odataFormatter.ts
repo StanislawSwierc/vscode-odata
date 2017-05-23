@@ -83,7 +83,7 @@ export class ODataDocumentFormattingEditProvider implements DocumentFormattingEd
 
         // Decode URI in case it was copied directly from the address bar..
         if (this.configuration.decode) {
-            text = decodeURI(text)
+            text = decodeURIComponent(text.replace(/\+/g, "%20"))
         }
 
         // Replace whole document.

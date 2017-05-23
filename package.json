@@ -18,7 +18,9 @@
   "icon": "images/logo.png",
   "activationEvents": [
     "onLanguage:odata",
-    "onCommand:extension.sayHello"
+    "onCommand:odata.combine",
+    "onCommand:odata.decode",
+    "onCommand:odata.encode"
   ],
   "main": "./out/src/extension",
   "contributes": {
@@ -96,8 +98,16 @@
     },
     "commands": [
       {
-        "command": "extension.sayHello",
-        "title": "Hello World"
+        "command": "odata.combine",
+        "title": "OData: Combine"
+      },
+      {
+        "command": "odata.decode",
+        "title": "OData: Decode URI"
+      },
+      {
+        "command": "odata.encode",
+        "title": "OData: Encode URI"
       }
     ]
   },

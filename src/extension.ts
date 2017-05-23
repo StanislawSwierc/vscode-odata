@@ -8,6 +8,7 @@ import { ODataMode } from './odataMode';
 import { ODataDiagnosticProvider } from './odataDiagnostic';
 import { ODataDocumentFormattingEditProvider, ODataFormattingConfiguration } from "./odataFormatter";
 import { IODataMetadataService, LocalODataMetadataService, ODataMetadataConfiguration } from "./odataMetadata";
+import { odataCombine, odataDecode, odataEncode } from "./odataCommands";
 import * as syntax from "./odataSyntax";
 
 import {
@@ -124,14 +125,10 @@ export function activate(context: vscode.ExtensionContext) {
     let configuration = vscode.workspace.getConfiguration('odata') as ODataConfiguration;
 
     // The command has been defined in the package.json file
-    // Now provide the implementation of the command with  registerCommand
-    // The commandId parameter must match the command field in package.json
-    let disposable = vscode.commands.registerCommand('extension.sayHello', () => {
-        // The code you place here will be executed every time your command is executed
+    context.subscriptions.push(vscode.commands.registerCommand('odata.combine', odataCombine));
+    context.subscriptions.push(vscode.commands.registerCommand('odata.decode', odataDecode));
+    context.subscriptions.push(vscode.commands.registerCommand('odata.encode', odataEncode));
 
-        // Display a message box to the user
-        vscode.window.showInformationMessage('Hello World!');
-    });
 
     if (configuration.completion.enable) {
         let metadataService = new LocalODataMetadataService(configuration.metadata);
@@ -151,8 +148,6 @@ export function activate(context: vscode.ExtensionContext) {
         let diagnosticsProvider = new ODataDiagnosticProvider(diagnosticCollection);
         vscode.workspace.onDidChangeTextDocument(diagnosticsProvider.onDidChangeTextDocument, null, context.subscriptions);
     }
-
-    context.subscriptions.push(disposable);
 }
 
 // this method is called when your extension is deactivated
