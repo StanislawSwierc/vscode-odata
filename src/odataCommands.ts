@@ -41,6 +41,8 @@ export function odataDecode() {
     let text = document.getText();
     let range = new Range(new Position(0, 0), document.positionAt(text.length));
 
+    // Use decodeURIComponent instead of decodeURI to allow users to split
+    // queries into multiple lines.
     text = decodeURIComponent(text.replace(/\+/g, "%20"));
 
     editor.edit(edit => edit.replace(range, text));
@@ -52,7 +54,7 @@ export function odataEncode() {
     let text = document.getText();
     let range = new Range(new Position(0, 0), document.positionAt(text.length));
 
-    text = encodeURIComponent(text);
+    text = encodeURI(text);
 
     editor.edit(edit => edit.replace(range, text));
 }
