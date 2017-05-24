@@ -41,11 +41,14 @@ export function odataDecode() {
     let text = document.getText();
     let range = new Range(new Position(0, 0), document.positionAt(text.length));
 
-    // Use decodeURIComponent instead of decodeURI to allow users to split
-    // queries into multiple lines.
-    text = decodeURIComponent(text.replace(/\+/g, "%20"));
-
-    editor.edit(edit => edit.replace(range, text));
+    try {
+        // Use decodeURIComponent instead of decodeURI to allow users to split
+        // queries into multiple lines.
+        text = decodeURI(text.replace(/\+/g, "%20"));
+        editor.edit(edit => edit.replace(range, text));
+    } catch (exception) {
+        vscode.window.showWarningMessage(`Query could not be decoded. ${exception.message}.`);
+    }
 }
 
 export function odataEncode() {

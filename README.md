@@ -13,7 +13,7 @@ In the first release this extension adds the capabilities listed below. Only sta
 ## Commands
 
 #### OData Combine
-Combines multiline query into a one-line URL.
+Combines multi-line query into a one-line URL.
 
 ![odata-combine](https://raw.githubusercontent.com/StanislawSwierc/vscode-odata/master/images/odata-combine.gif)
 
