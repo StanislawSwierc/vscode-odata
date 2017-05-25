@@ -106,4 +106,4 @@ Improved formatting and new commands added.
 Defined settings model to control stable and experimental features.
 
 ### 0.0.1 (2017-04-23)
-Initial release to to exercise publish scripts.
+Initial release to exercise publish scripts.
