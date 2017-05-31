@@ -10,7 +10,7 @@
     "odata.metadata.map": [
         { 
             "url": "https://stansw.analytics.visualstudio.com/vscode-odata/_odata", 
-            "path": "C:/Sources/vscode-odata/test/fixtures/metadata.xml"
+            "path": "metadata.xml"
         }
     ]
 }

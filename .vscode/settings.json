@@ -6,6 +6,9 @@
     "search.exclude": {
         "out": true // set this to false to include "out" folder in search results
     },
+    "spellchecker.ignoreFileExtensions": [
+        ".pegjs"
+    ],
     "spellchecker.ignoreWordsList": [
         "odata",
         "OData",

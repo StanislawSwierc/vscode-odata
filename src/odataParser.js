@@ -149,11 +149,11 @@
 
         peg$c0 = "?",
         peg$c1 = peg$literalExpectation("?", false),
-        peg$c2 = function(serviceRoot, select, error) { 
+        peg$c2 = function(serviceRoot, error) { 
             return { 
               kind: "Uri", 
               serviceRoot: serviceRoot,
-              select: select, 
+        //      select: select, 
               error: error
             }; 
           },
@@ -406,7 +406,7 @@
     }
 
     function peg$parseroot() {
-      var s0, s1, s2, s3, s4, s5, s6;
+      var s0, s1, s2, s3, s4;
 
       s0 = peg$currPos;
       s1 = peg$currPos;
@@ -427,26 +427,14 @@
             if (peg$silentFails === 0) { peg$fail(peg$c1); }
           }
           if (s3 !== peg$FAILED) {
-            s4 = peg$parse_();
+            s4 = peg$parseerror();
+            if (s4 === peg$FAILED) {
+              s4 = null;
+            }
             if (s4 !== peg$FAILED) {
-              s5 = peg$parseselect();
-              if (s5 !== peg$FAILED) {
-                s6 = peg$parseerror();
-                if (s6 === peg$FAILED) {
-                  s6 = null;
-                }
-                if (s6 !== peg$FAILED) {
-                  peg$savedPos = s0;
-                  s1 = peg$c2(s1, s5, s6);
-                  s0 = s1;
-                } else {
-                  peg$currPos = s0;
-                  s0 = peg$FAILED;
-                }
-              } else {
-                peg$currPos = s0;
-                s0 = peg$FAILED;
-              }
+              peg$savedPos = s0;
+              s1 = peg$c2(s1, s4);
+              s0 = s1;
             } else {
               peg$currPos = s0;
               s0 = peg$FAILED;

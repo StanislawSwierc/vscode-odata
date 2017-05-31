@@ -1,6 +1,8 @@
 import { XmlDocument, XmlElement } from 'xmldoc';
 import * as Syntax from './odataSyntax'
 import * as fs from 'fs-promise';
+import * as path from 'path'
+import * as vscode from 'vscode';
 
 export interface ODataMetadataConfiguration {
     map: Array<{ url: string, path: string }>;
@@ -195,11 +197,22 @@ export class LocalODataMetadataService implements IODataMetadataService {
         let mapEntry = this.configuration.map.find(_ => serviceRoot.startsWith(_.url.toLocaleLowerCase()));
         if (mapEntry) {
             if (this.cache[mapEntry.path] === undefined) {
-                this.cache[mapEntry.path] = fs.readFile(mapEntry.path, { encoding: "utf8" })
-                    .then(text => {
-                        let parser = new ODataMetadataParser();
-                        return parser.parse(text);
-                    });
+                let metadataPath = path.isAbsolute(mapEntry.path)
+                    ? mapEntry.path
+                    : vscode.workspace.rootPath
+                    ? path.join(vscode.workspace.rootPath, mapEntry.path)
+                    : mapEntry.path;
+
+                this.cache[mapEntry.path] = fs.readFile(metadataPath, { encoding: "utf8" })
+                    .then(
+                        text => {
+                            let parser = new ODataMetadataParser();
+                            return parser.parse(text);
+                        },
+                        reason => {
+                            console.error(reason);
+                        }
+                    );
             }
             return this.cache[mapEntry.path];
         } else {

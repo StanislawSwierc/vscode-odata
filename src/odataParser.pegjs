@@ -1,9 +1,9 @@
 root
-  = serviceRoot:$serviceRoot _ '?' _ select:select error:error? { 
+  = serviceRoot:$serviceRoot _ '?' error:error? { 
     return { 
       kind: "Uri", 
       serviceRoot: serviceRoot,
-      select: select, 
+//      select: select, 
       error: error
     }; 
   }

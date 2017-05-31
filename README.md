@@ -72,14 +72,18 @@ Enable/disable URI decoding as part of formatting. This can be helpful if you co
 Enable/disable syntax-aware formatting.
 
 #### `odata.metadata.map` (requires restart)
-Associate metadata files in the current project. This setting consists of a list of mapping definition where user can specify url and the path to the offline metadata. You can get this file by opening up `$metadata` endpoint and saving it locally. Example below was created by downloading `https://stansw.analytics.visualstudio.com/vscode-odata/_odata/$metadata` file.
+Associate metadata files in the current project. This setting consists of a list of mapping definition where user can specify url and the path to the offline metadata. Path can be full or relative to the workspace root. You can get this file by opening up `$metadata` endpoint and saving it locally. Example below was created by downloading `https://stansw.analytics.visualstudio.com/vscode-odata/_odata/$metadata` file.
 
  ```json
 {
     "odata.metadata.map": [
         { 
             "url": "https://stansw.analytics.visualstudio.com/vscode-odata/_odata", 
-            "path": "C:/Sources/vscode-odata/test/fixtures/metadata.xml"
+            "path": "metadata.xml"
+        },
+        { 
+            "url": "https://stansw.analytics.visualstudio.com/proj/_odata", 
+            "path": "metadata.xml"
         }
     ]
 }
@@ -98,6 +102,9 @@ This extension was created as part of a team-wide hackathon that took place on 2
 
 ## Release Notes
 Currently this extension is in a very early stage.
+
+### 0.0.7 (2017-05-31)
+Improved completion and new commands added: Escape, Unescape.
 
 ### 0.0.5 (2017-05-23)
 Improved formatting and new commands added.
