@@ -20,7 +20,9 @@
     "onLanguage:odata",
     "onCommand:odata.combine",
     "onCommand:odata.decode",
-    "onCommand:odata.encode"
+    "onCommand:odata.encode",
+    "onCommand:odata.escape",
+    "onCommand:odata.unescape"
   ],
   "main": "./out/src/extension",
   "contributes": {
@@ -108,6 +110,14 @@
       {
         "command": "odata.encode",
         "title": "OData: Encode URI"
+      },
+      {
+        "command": "odata.escape",
+        "title": "OData: Escape"
+      },
+      {
+        "command": "odata.unescape",
+        "title": "OData: Unescape"
       }
     ]
   },

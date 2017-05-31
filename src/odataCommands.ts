@@ -61,3 +61,37 @@ export function odataEncode() {
 
     editor.edit(edit => edit.replace(range, text));
 }
+
+export function odataEscape() {
+    let editor = vscode.window.activeTextEditor;
+    let document = editor.document;
+    let text = document.getText();
+    let range = new Range(new Position(0, 0), document.positionAt(text.length));
+
+    text = text
+        .replace(/\\/g, "\\\\")
+        .replace(/\n/g, "\\n")
+        .replace(/\'/g, "\\'")
+        .replace(/\"/g, '\\"')
+        .replace(/\r/g, "\\r")
+        .replace(/\t/g, "\\t");
+
+    editor.edit(edit => edit.replace(range, text));
+}
+
+export function odataUnescape() {
+    let editor = vscode.window.activeTextEditor;
+    let document = editor.document;
+    let text = document.getText();
+    let range = new Range(new Position(0, 0), document.positionAt(text.length));
+
+    text = text
+        .replace(/\\n/g, "\n")
+        .replace(/\\'/g, "\'")
+        .replace(/\\"/g, '\"')
+        .replace(/\\r/g, "\r")
+        .replace(/\\t/g, "\t")
+        .replace(/\\\\/g, "\\");
+
+    editor.edit(edit => edit.replace(range, text));
+}

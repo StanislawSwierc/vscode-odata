@@ -8,7 +8,7 @@ import { ODataMode } from './odataMode';
 import { ODataDiagnosticProvider } from './odataDiagnostic';
 import { ODataDocumentFormattingEditProvider, ODataFormattingConfiguration } from "./odataFormatter";
 import { IODataMetadataService, LocalODataMetadataService, ODataMetadataConfiguration } from "./odataMetadata";
-import { odataCombine, odataDecode, odataEncode } from "./odataCommands";
+import { odataCombine, odataDecode, odataEncode, odataEscape, odataUnescape } from "./odataCommands";
 import * as syntax from "./odataSyntax";
 
 import {
@@ -128,8 +128,10 @@ export function activate(context: vscode.ExtensionContext) {
     context.subscriptions.push(vscode.commands.registerCommand('odata.combine', odataCombine));
     context.subscriptions.push(vscode.commands.registerCommand('odata.decode', odataDecode));
     context.subscriptions.push(vscode.commands.registerCommand('odata.encode', odataEncode));
-
-
+    context.subscriptions.push(vscode.commands.registerCommand('odata.escape', odataEscape));
+    context.subscriptions.push(vscode.commands.registerCommand('odata.unescape', odataUnescape));
+    
+    
     if (configuration.completion.enable) {
         let metadataService = new LocalODataMetadataService(configuration.metadata);
         let completionItemProvider = new ODataCompletionItemProvider(metadataService);
