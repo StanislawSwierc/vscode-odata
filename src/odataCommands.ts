@@ -71,7 +71,6 @@ export function odataEscape() {
     text = text
         .replace(/\\/g, "\\\\")
         .replace(/\n/g, "\\n")
-        .replace(/\'/g, "\\'")
         .replace(/\"/g, '\\"')
         .replace(/\r/g, "\\r")
         .replace(/\t/g, "\\t");
@@ -87,7 +86,6 @@ export function odataUnescape() {
 
     text = text
         .replace(/\\n/g, "\n")
-        .replace(/\\'/g, "\'")
         .replace(/\\"/g, '\"')
         .replace(/\\r/g, "\r")
         .replace(/\\t/g, "\t")

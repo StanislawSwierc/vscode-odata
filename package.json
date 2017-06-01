@@ -2,10 +2,10 @@
   "name": "vscode-odata",
   "displayName": "vscode-odata",
   "description": "OData query language support.",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "publisher": "stansw",
   "engines": {
-    "vscode": "^1.10.0"
+    "vscode": "^1.12.0"
   },
   "categories": [
     "Languages"

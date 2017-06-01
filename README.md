@@ -103,6 +103,9 @@ This extension was created as part of a team-wide hackathon that took place on 2
 ## Release Notes
 Currently this extension is in a very early stage.
 
+### 0.0.8 (2017-06-01)
+Update minimum compatible VS Code version to 1.12.0.
+
 ### 0.0.7 (2017-05-31)
 Improved completion and new commands added: Escape, Unescape.
 
