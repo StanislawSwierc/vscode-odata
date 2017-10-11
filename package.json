@@ -118,6 +118,10 @@
       {
         "command": "odata.unescape",
         "title": "OData: Unescape"
+      },
+      {
+        "command": "odata.open",
+        "title": "OData: Open"
       }
     ]
   },
@@ -132,7 +136,8 @@
     "@types/fs-promise": "^1.0.2",
     "@types/lodash": "^4.14.63",
     "@types/mocha": "^2.2.32",
-    "@types/node": "^6.0.40",
+    "@types/node": "^7.0.43",
+    "@types/opn": "^3.0.28",
     "@types/xmldoc": "^0.5.0",
     "chai": "^3.5.0",
     "grunt": "^1.0.1",
@@ -146,6 +151,7 @@
   "dependencies": {
     "fs-promise": "^2.0.2",
     "lodash": "^4.17.4",
+    "opn": "^5.1.0",
     "xmldoc": "^1.0.0"
   }
 }

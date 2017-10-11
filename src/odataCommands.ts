@@ -1,6 +1,8 @@
 'use strict';
 
 import * as vscode from 'vscode';
+import * as open from 'opn'
+import * as url from 'url'
 
 import {
     TextDocument, Position, Range, TextEditorEdit
@@ -22,7 +24,12 @@ export function odataCombine() {
 function odataCombineImpl(document: vscode.TextDocument, edit: vscode.TextEditorEdit) {
     let text = document.getText();
     let range = new Range(new Position(0, 0), document.positionAt(text.length));
-    let textCombined = text
+    let textCombined = odataCombineText(text);
+    edit.replace(range, textCombined);
+}
+
+function odataCombineText(text: string) {
+    return text
         // Transform to lines.
         .split('\n')
         // Skip comments.
@@ -32,7 +39,6 @@ function odataCombineImpl(document: vscode.TextDocument, edit: vscode.TextEditor
         .join(' ')
         // Make sure there are no spaces in the fragment part or the URI.
         .replace(/\s+\?/, "?");
-    edit.replace(range, textCombined);
 }
 
 export function odataDecode() {
@@ -89,7 +95,29 @@ export function odataUnescape() {
         .replace(/\\"/g, '\"')
         .replace(/\\r/g, "\r")
         .replace(/\\t/g, "\t")
-        .replace(/\\\\/g, "\\");
+        .replace(/\\\\/g, "\\")
+        .trim();
 
     editor.edit(edit => edit.replace(range, text));
+}
+
+export function odataOpen() {
+    let editor = vscode.window.activeTextEditor;
+    let document = editor.document;
+
+    if (document.languageId !== ODataMode.language) {
+        vscode.window.showInformationMessage('This command is availble only for OData files.');
+    } else {
+        let text = document.getText();
+        let range = new Range(new Position(0, 0), document.positionAt(text.length));
+        let textCombined = odataCombineText(text);
+
+        try {
+            let textUrl = new url.URL(textCombined)
+            open(textUrl.href);
+        }
+        catch (exception) {
+            vscode.window.showInformationMessage('Document does not represent a valid URL.');
+        }
+    }
 }
