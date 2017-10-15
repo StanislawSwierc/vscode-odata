@@ -5,7 +5,7 @@ import * as open from 'opn'
 import * as url from 'url'
 
 import {
-    TextDocument, Position, Range, TextEditorEdit
+    TextDocument, Position, Range, TextEditorEdit, TextEditor
 } from 'vscode';
 
 import { ODataMode } from './odataMode';
@@ -108,8 +108,8 @@ export function odataOpen() {
     if (document.languageId !== ODataMode.language) {
         vscode.window.showInformationMessage('This command is availble only for OData files.');
     } else {
-        let text = document.getText();
-        let range = new Range(new Position(0, 0), document.positionAt(text.length));
+        let range = getActiveRange(editor);
+        let text = document.getText(range);
         let textCombined = odataCombineText(text);
 
         try {
@@ -117,7 +117,27 @@ export function odataOpen() {
             open(textUrl.href);
         }
         catch (exception) {
-            vscode.window.showInformationMessage('Document does not represent a valid URL.');
+            vscode.window.showWarningMessage('Document does not represent a valid URL.');
         }
+    }
+}
+
+function getActiveRange(editor : TextEditor) : Range {
+    let selection = editor.selection;
+    if (selection.isEmpty) {
+        // Empy selection indicates line selection mode.
+        let startLine = selection.start.line;
+        let endLine = selection.end.line;
+        // Extend selection to not-empty previous lines.
+        while(startLine > 0 && editor.document.lineAt(startLine - 1).isEmptyOrWhitespace == false) {
+            startLine -= 1;
+        }
+        // Extend selection to non-empty next lines.
+        while(endLine < editor.document.lineCount - 1 && editor.document.lineAt(endLine + 1).isEmptyOrWhitespace == false) {
+            endLine += 1;
+        }
+        return new Range(new Position(startLine, 0), editor.document.lineAt(endLine).range.end);
+    } else {
+        return selection;
     }
 }
