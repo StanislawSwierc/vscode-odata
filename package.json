@@ -2,7 +2,7 @@
   "name": "vscode-odata",
   "displayName": "vscode-odata",
   "description": "OData query language support.",
-  "version": "0.0.8",
+  "version": "0.1.0",
   "publisher": "stansw",
   "engines": {
     "vscode": "^1.12.0"
@@ -22,6 +22,7 @@
     "onCommand:odata.decode",
     "onCommand:odata.encode",
     "onCommand:odata.escape",
+    "onCommand:odata.open",
     "onCommand:odata.unescape"
   ],
   "main": "./out/src/extension",

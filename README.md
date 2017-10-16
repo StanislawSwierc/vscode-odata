@@ -12,6 +12,9 @@ In the first release this extension adds the capabilities listed below. Only sta
 
 ## Commands
 
+#### OData Open
+Combines multi-line query into a one-line URL and opens it in a browser.
+
 #### OData Combine
 Combines multi-line query into a one-line URL.
 
@@ -99,21 +102,3 @@ This extension was created as part of a team-wide hackathon that took place on 2
 
 * [Geoff Cox (@GeoffCox)](https://github.com/GeoffCox) - created initial syntax highlighting definition.
 * [Konstantin Kosinsky (@Kosinsky)](https://github.com/Kosinsky) - implemented metadata parser.
-
-## Release Notes
-Currently this extension is in a very early stage.
-
-### 0.0.8 (2017-06-01)
-Update minimum compatible VS Code version to 1.12.0.
-
-### 0.0.7 (2017-05-31)
-Improved completion and new commands added: Escape, Unescape.
-
-### 0.0.5 (2017-05-23)
-Improved formatting and new commands added.
-
-### 0.0.3 (2017-04-25)
-Defined settings model to control stable and experimental features.
-
-### 0.0.1 (2017-04-23)
-Initial release to exercise publish scripts.
