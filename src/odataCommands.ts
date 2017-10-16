@@ -2,7 +2,7 @@
 
 import * as vscode from 'vscode';
 import * as open from 'opn'
-import * as url from 'url'
+import { URL } from 'url'
 
 import {
     TextDocument, Position, Range, TextEditorEdit, TextEditor
@@ -17,19 +17,24 @@ export function odataCombine() {
     if (document.languageId !== ODataMode.language) {
         vscode.window.showInformationMessage('This command affects only OData files.');
     } else {
-        editor.edit(edit => odataCombineImpl(document, edit));
+        try {
+            let range = getActiveRange(editor);
+            let text = editor.document.getText(range);
+            let url = odataFormatUrl(text);
+            editor.edit(edit => edit.replace(range, url));
+        }
+        catch (exception) {
+            vscode.window.showWarningMessage('Document does not represent a valid URL.');
+        }
     }
 }
 
-function odataCombineImpl(document: vscode.TextDocument, edit: vscode.TextEditorEdit) {
-    let text = document.getText();
-    let range = new Range(new Position(0, 0), document.positionAt(text.length));
-    let textCombined = odataCombineText(text);
-    edit.replace(range, textCombined);
-}
-
-function odataCombineText(text: string) {
-    return text
+/**
+ * Formats OData document with comments and line braks as a valid url.
+ * @param text - OData document.
+ */
+function odataFormatUrl(text: string) {
+    let urlText = text
         // Transform to lines.
         .split('\n')
         // Skip comments.
@@ -39,13 +44,29 @@ function odataCombineText(text: string) {
         .join(' ')
         // Make sure there are no spaces in the fragment part or the URI.
         .replace(/\s+\?/, "?");
+
+    // Make sure result is a valid URL.
+    let url = new URL(urlText);
+
+    // Make sure query parameters do not have leading or trailing whitespaces.
+    for (let kv of url.searchParams) {
+        let key = kv[0];
+        let keyClean = key.trim();
+        let value = kv[1];
+        let valueClean = value.trim();
+        if (key.length != keyClean.length || value.length != valueClean.length) {
+            url.searchParams.delete(key);
+            url.searchParams.append(keyClean, valueClean);
+        }
+    }
+
+    return url.href;
 }
 
 export function odataDecode() {
     let editor = vscode.window.activeTextEditor;
-    let document = editor.document;
-    let text = document.getText();
-    let range = new Range(new Position(0, 0), document.positionAt(text.length));
+    let range = getActiveRange(editor);
+    let text = editor.document.getText(range);
 
     try {
         // Use decodeURIComponent instead of decodeURI to allow users to split
@@ -59,9 +80,8 @@ export function odataDecode() {
 
 export function odataEncode() {
     let editor = vscode.window.activeTextEditor;
-    let document = editor.document;
-    let text = document.getText();
-    let range = new Range(new Position(0, 0), document.positionAt(text.length));
+    let range = getActiveRange(editor);
+    let text = editor.document.getText(range);
 
     text = encodeURI(text);
 
@@ -70,9 +90,8 @@ export function odataEncode() {
 
 export function odataEscape() {
     let editor = vscode.window.activeTextEditor;
-    let document = editor.document;
-    let text = document.getText();
-    let range = new Range(new Position(0, 0), document.positionAt(text.length));
+    let range = getActiveRange(editor);
+    let text = editor.document.getText(range);
 
     text = text
         .replace(/\\/g, "\\\\")
@@ -86,9 +105,8 @@ export function odataEscape() {
 
 export function odataUnescape() {
     let editor = vscode.window.activeTextEditor;
-    let document = editor.document;
-    let text = document.getText();
-    let range = new Range(new Position(0, 0), document.positionAt(text.length));
+    let range = getActiveRange(editor);
+    let text = editor.document.getText(range);
 
     text = text
         .replace(/\\n/g, "\n")
@@ -108,13 +126,11 @@ export function odataOpen() {
     if (document.languageId !== ODataMode.language) {
         vscode.window.showInformationMessage('This command is availble only for OData files.');
     } else {
-        let range = getActiveRange(editor);
-        let text = document.getText(range);
-        let textCombined = odataCombineText(text);
-
         try {
-            let textUrl = new url.URL(textCombined)
-            open(textUrl.href);
+            let range = getActiveRange(editor);
+            let text = document.getText(range);
+            let url = odataFormatUrl(text);
+            open(url);
         }
         catch (exception) {
             vscode.window.showWarningMessage('Document does not represent a valid URL.');
@@ -122,18 +138,18 @@ export function odataOpen() {
     }
 }
 
-function getActiveRange(editor : TextEditor) : Range {
+function getActiveRange(editor: TextEditor): Range {
     let selection = editor.selection;
     if (selection.isEmpty) {
         // Empy selection indicates line selection mode.
         let startLine = selection.start.line;
         let endLine = selection.end.line;
         // Extend selection to not-empty previous lines.
-        while(startLine > 0 && editor.document.lineAt(startLine - 1).isEmptyOrWhitespace == false) {
+        while (startLine > 0 && editor.document.lineAt(startLine - 1).isEmptyOrWhitespace == false) {
             startLine -= 1;
         }
         // Extend selection to non-empty next lines.
-        while(endLine < editor.document.lineCount - 1 && editor.document.lineAt(endLine + 1).isEmptyOrWhitespace == false) {
+        while (endLine < editor.document.lineCount - 1 && editor.document.lineAt(endLine + 1).isEmptyOrWhitespace == false) {
             endLine += 1;
         }
         return new Range(new Position(startLine, 0), editor.document.lineAt(endLine).range.end);
