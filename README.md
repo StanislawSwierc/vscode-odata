@@ -1,5 +1,5 @@
 # OData for Visual Studio Code
-This extension adds rich language support for the [OData](http://www.odata.org/) query language.
+OData for Visual Studio Code is an extension for [Visual Studio Code](https://code.visualstudio.com) that adds rich language support for the [OData](http://www.odata.org) query language.
 
 ## Features
 In the first release this extension adds the capabilities listed below. Only stable capabilities are enabled by default, while others can be turned on in the settings.
