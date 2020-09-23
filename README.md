@@ -23,12 +23,12 @@ Combines multi-line query into a one-line URL.
 #### OData Encode URI
 Encodes URI and replaces unsafe ASCII characters with a "%" followed by two hexadecimal digits. 
 
-![odata-combine](https://raw.githubusercontent.com/StanislawSwierc/vscode-odata/master/images/odata-encode.gif)
+![odata-encode](https://raw.githubusercontent.com/StanislawSwierc/vscode-odata/master/images/odata-encode.gif)
 
 #### OData Decode URI
 Decodes URI. This command is really helpful when you copy query from a browser or log files that store all URIs in the encoded form.
 
-![odata-combine](https://raw.githubusercontent.com/StanislawSwierc/vscode-odata/master/images/odata-encode.gif)
+![odata-decode](https://raw.githubusercontent.com/StanislawSwierc/vscode-odata/master/images/odata-decode.gif)
 
 
 ## Settings
