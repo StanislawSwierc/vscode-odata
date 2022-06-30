@@ -8,7 +8,7 @@
     "vscode": "^1.12.0"
   },
   "categories": [
-    "Languages"
+    "Programming Languages"
   ],
   "private": true,
   "repository": {
@@ -128,29 +128,30 @@
   },
   "scripts": {
     "vscode:prepublish": "tsc -p ./",
-    "compile": "tsc -watch -p ./",
-    "postinstall": "node ./node_modules/vscode/bin/install",
+    "compile": "tsc -p ./",
     "test": "node ./node_modules/vscode/bin/test"
   },
   "devDependencies": {
     "@types/chai": "^3.5.0",
+    "@types/fs-extra": "^9.0.7",
     "@types/fs-promise": "^1.0.2",
     "@types/lodash": "^4.14.63",
     "@types/mocha": "^2.2.32",
-    "@types/node": "^7.0.43",
+    "@types/node": "^18.0.0",
     "@types/opn": "^3.0.28",
+    "@types/vscode": "^1.68.1",
     "@types/xmldoc": "^0.5.0",
+    "@vscode/test-electron": "^2.1.5",
     "chai": "^3.5.0",
     "grunt": "^1.0.1",
     "grunt-contrib-copy": "^1.0.0",
     "grunt-exec": "^2.0.0",
-    "mocha": "^2.3.3",
+    "mocha": "^10.0.0",
     "pegjs": "^0.10.0",
-    "typescript": "^2.0.3",
-    "vscode": "^1.0.0"
+    "typescript": "^2.0.3"
   },
   "dependencies": {
-    "fs-promise": "^2.0.2",
+    "fs-extra": "^10.1.0",
     "lodash": "^4.17.4",
     "opn": "^5.1.0",
     "xmldoc": "^1.0.0"

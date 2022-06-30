@@ -6,10 +6,12 @@
         "lib": [
             "es6"
         ],
+        "allowJs": true,
         "sourceMap": true,
         "rootDir": "."
     },
     "exclude": [
+        "out",
         "node_modules",
         ".vscode-test"
     ]

@@ -1,6 +1,6 @@
 import { XmlDocument, XmlElement } from 'xmldoc';
 import * as Syntax from './odataSyntax'
-import * as fs from 'fs-promise';
+import * as fs from 'fs-extra';
 import * as path from 'path'
 import * as vscode from 'vscode';
 
@@ -186,21 +186,21 @@ export function createPropertyMap(metadata: IMetadata): { [id: string]: IPropert
 
 export class LocalODataMetadataService implements IODataMetadataService {
     configuration: ODataMetadataConfiguration;
-    cache: { [key: string]: Thenable<IMetadata>; } = {};
+    cache: { [key: string]: Promise<IMetadata>; } = {};
 
     constructor(configuraiton: ODataMetadataConfiguration) {
         this.configuration = configuraiton;
     }
 
-    getMetadataForDocument(uri: string, tree: Syntax.SyntaxTree): Thenable<IMetadata> {
+    getMetadataForDocument(uri: string, tree: Syntax.SyntaxTree): Promise<IMetadata> {
         let serviceRoot = tree.root.serviceRoot.toLowerCase();
         let mapEntry = this.configuration.map.find(_ => serviceRoot.startsWith(_.url.toLocaleLowerCase()));
         if (mapEntry) {
             if (this.cache[mapEntry.path] === undefined) {
                 let metadataPath = path.isAbsolute(mapEntry.path)
                     ? mapEntry.path
-                    : vscode.workspace.rootPath
-                    ? path.join(vscode.workspace.rootPath, mapEntry.path)
+                    : vscode.workspace.workspaceFolders[0]
+                    ? path.join(vscode.workspace.workspaceFolders[0].toString(), mapEntry.path)
                     : mapEntry.path;
 
                 this.cache[mapEntry.path] = fs.readFile(metadataPath, { encoding: "utf8" })
@@ -211,6 +211,7 @@ export class LocalODataMetadataService implements IODataMetadataService {
                         },
                         reason => {
                             console.error(reason);
+                            return null
                         }
                     );
             }
