@@ -49,16 +49,14 @@ function odataFormatUrl(text: string) {
     let url = new URL(urlText);
 
     // Make sure query parameters do not have leading or trailing whitespaces.
-    for (let kv of url.searchParams) {
-        let key = kv[0];
+    url.searchParams.forEach((value, key, searchParams) => { 
         let keyClean = key.trim();
-        let value = kv[1];
         let valueClean = value.trim();
         if (key.length != keyClean.length || value.length != valueClean.length) {
-            url.searchParams.delete(key);
-            url.searchParams.append(keyClean, valueClean);
-        }
-    }
+            searchParams.delete(key);
+            searchParams.append(keyClean, valueClean);
+        }        
+    })
 
     return url.href;
 }
